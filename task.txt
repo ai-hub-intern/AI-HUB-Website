@@ -1,0 +1,61 @@
+Erstelle das Konzept, Design und Layout einer modernen, interaktiven und visuell eindrucksvollen Website für den Startplatz AI Hub – ein Innovationszentrum für Künstliche Intelligenz mit Sitz in Deutschland. Die Seite soll gleichzeitig B2B-Kunden (Unternehmen, Investoren, Innovationspartner) und B2C-Zielgruppen (Tech-Enthusiasten, Gründer:innen, Entwickler:innen) ansprechen. Ziel ist es, einen modernen, zukunftsorientierten Auftritt zu gestalten, der Nutzer:innen emotional abholt, neugierig macht und zum Verweilen einlädt.
+
+Designstil:
+Modularer Aufbau mit klar getrennten Sektionen, inspiriert von modernen One-Page-Konzepten
+
+3D-Effekte, Parallax-Scrolling, Micro-Animationen
+
+Farbwelt: Reduktion auf starke Kontraste (Schwarz/Weiß + Akzentfarben wie Neonrot oder Electric Blue)
+
+Visuelle Inspiration: UNFOLD Studio Website, EDP Renewables Report Page (siehe Bildreferenzen)
+
+Typografie: Bold, technisch, futuristisch – z. B. Variable Fonts
+
+Layout: Diagonal-Elemente, Layer-Übergänge, Hover-Interaktionen
+
+Inhalte & Module (als scrollbare Sektionen):
+Hero Section:
+
+Starkes Statement: „AI is the new electricity – we build the grid.“
+
+Animation einer neuronalen Netzstruktur in 3D
+
+CTA: Jetzt mitmachen / Innovation starten
+
+Über den AI Hub:
+
+Mission, Vision, USP
+
+3D-Explainer-Modul oder animierter „Organismus“ aus Modulen (Startups, Tools, Wissen)
+
+Programme & Angebote:
+
+Für Startups: Inkubatoren, Förderungen
+
+Für Unternehmen: Kooperation, Beratung, Pilotprojekte
+
+Für Entwickler: Workshops, Hackathons, Community
+
+Cases & Success-Stories:
+
+Interaktive Timeline oder Case-Galerie
+
+Optional mit 3D-Karten, Logos, Key Metrics
+
+News, Blog & KI-Wissen:
+
+SEO-relevant, filterbar nach Themen wie Ethics, Tools, GPT, Robotics
+
+Verlinkung mit Content Hub
+
+Community & Events:
+
+Kalender mit anstehenden Events, Meetups, Demos
+
+3D-Karten mit Standortinteraktion (z. B. Köln, Düsseldorf…)
+
+Kontakt & Mitmachen:
+
+Formulare für Startups, Unternehmen, Presse
+
+Slack/Discord-Invite, Newsletter

@@ -1,0 +1,101 @@
+STARTPLATZ AI Hub – Recherche und Analyse
+==========================================
+
+1. SELBSTVERSTÄNDNIS, VISION UND GRÜNDUNGSHINTERGRUND
+-----------------------------------------------------
+- Gegründet 2023 als KI-Initiative des Startup-Inkubators STARTPLATZ (Köln & Düsseldorf).
+- Ziel: Führender Hub für generative KI in Deutschland.
+- Vision: Menschen mit KI befähigen, kreativ und frei ihre Leidenschaften zu verfolgen.
+- Fokus: Lernen, gemeinsames Wachsen, praktische Umsetzung von KI, besonders generativer KI.
+- Initiator: Dr. Lorenz Gräf (CEO STARTPLATZ).
+- Motto: “KI zugänglich machen, Innovationen beschleunigen, Menschen zusammenbringen”.
+
+2. PROGRAMME, SERVICES UND FORMATE
+----------------------------------
+- Workshops & Schulungen (Einsteiger bis Fortgeschrittene, z. B. Prompt Engineering).
+- AI Bootcamps & AI Summer School (hands-on, projektorientiert, z. B. LangChain, Chatbots).
+- Inhouse-Trainings für Unternehmen.
+- AZAV-zertifizierter Kurs “KI-Manager” (100% förderfähig mit Bildungsgutschein).
+- 1-Tages-KI-Kompetenz-Workshop (für AI Act Anforderungen).
+- AI Fridays (wöchentliche Impulsveranstaltungen).
+- AI Gathering NRW (regelmäßige Meetups).
+- Hackathons, Ideation-Challenges, KI-Sprints.
+- Coworking Spaces & Infrastruktur in Köln & Düsseldorf (24/7-Zugang).
+- Mitgliedschaftsmodell (monatlich 220 €, Zugang zu exklusiven Inhalten/Slack etc.).
+- Wissensressourcen online: KI-Lexikon, AI-Tool-Sammlung, Blog, Newsletter.
+
+3. ZIELGRUPPEN
+--------------
+- Startups & Gründer im Bereich KI.
+- Unternehmen & Führungskräfte (KMU & Konzerne).
+- Entwickler, Data Scientists, Tech-Enthusiasten.
+- Forschende & Studierende (Summer School, Workshops).
+- Einsteiger & Weiterbildungsinteressierte.
+- Ziel: Breite, diverse Community – alle, die KI verstehen & anwenden wollen.
+
+4. USP (ALLEINSTELLUNGSMERKMALE)
+--------------------------------
+- Kombination von Startup-Inkubator + KI-Kompetenzzentrum.
+- Praxisorientierung: Anwendung statt Forschung.
+- Fokus auf Generative AI (GPT, LLMs etc.).
+- Community-getriebene Struktur, Peer-Learning & Wissensaustausch.
+- Physische Präsenz in NRW mit moderner Infrastruktur.
+- Niedrige Einstiegshürden, offene Events.
+- Auszeichnung: Innovationsort des Jahres 2024 (Publikumspreis Wirtschaft).
+
+5. ERFOLGE, PARTNER UND LEUCHTTURMPROJEKTE
+------------------------------------------
+- Award: “Innovationsstandort 2024” beim Innovator des Jahres.
+- 1.500+ Teilnehmende, 80+ Events, 960+ Workshop-Teilnahmen, 95% Zufriedenheit.
+- AI Summer School 2023: erste Leuchtturm-Projekte, interdisziplinär, Stipendien.
+- Kooperationspartner: Regionale Agenturen, Startups, Mittelstand.
+- Presseberichte in AI:Mag, REGIO MANAGER, Innovator des Jahres u.v.m.
+- Aufbau einer Startup-Community mit ersten Prototypen & Use-Cases.
+
+6. ÖFFENTLICHE POSITIONIERUNG
+-----------------------------
+- Website: startplatz-ai-hub.de (zweisprachig, modern, inhaltlich fundiert).
+- Social Media: Aktiv auf LinkedIn, Instagram, Twitter, Newsletter via beehiiv.
+- Presse: Lokale & überregionale Medien, Fachportale, Preisverleihungen.
+- Externe Plattformen: Erwähnungen auf Startup-Verzeichnissen, Partnerseiten.
+- Narrative: “Zentrale der deutschen KI-Community”, “greifbare, praxisnahe KI”.
+
+7. RELEVANTE THEMEN UND SEO-KEYWORDS
+-------------------------------------
+- Generative KI, LLMs, Prompt Engineering, GPT, ChatGPT.
+- “KI in Unternehmen”, “KI Use Cases”, “KI Einführung”, “KI Weiterbildung”.
+- “KI Manager Kurs”, “KI Fortbildung gefördert”, “AZAV KI-Kurs”.
+- Glossar-Keywords: “Künstliche Intelligenz”, “Maschinelles Lernen”, “AI Governance”.
+- EU AI Act, KI-Regulierung, Compliance, “KI Gesetz Anforderungen”.
+- Regionale Begriffe: “KI Köln”, “AI Hub Düsseldorf”, “KI Veranstaltung NRW”.
+- Trendthemen: AutoGPT, LangChain, Edge AI, Responsible AI.
+
+8. INTERNATIONALE BENCHMARKS
+----------------------------
+- **Station F (Paris):** größter Startup-Campus weltweit, starke Community & Klarheit der Programme.
+- **NVIDIA Inception:** globales Förderprogramm für AI-Startups, Storytelling & Mitgliedsvorteile.
+- **appliedAI (München):** Thought Leadership, Corporate-Kooperationen, Whitepapers, KI-Reifegradmodelle.
+- **TUM AI Center / K.I.E.Z. Berlin:** Wissenschaftliche Tiefe, akademische Förderung, Talentzugang.
+- Lessons learned: klare Programme, starke Partnerschaften, Thought Leadership, Internationalität.
+
+9. SCHLUSSFOLGERUNGEN FÜR DIE WEBSITE
+-------------------------------------
+Empfohlene Struktur:
+- **Startseite**: Mission, Vorteile, Einstieg.
+- **Programme**: Kurse, Bootcamps, Summer School.
+- **Events**: AI Fridays, Gatherings, Hackathons.
+- **Community**: Mitgliedschaft, Coworking, Testimonials.
+- **Partner & Erfolge**: Logos, Pressestimmen, Zahlen.
+- **Wissen**: Lexikon, Blog, Tool-Verzeichnis.
+- **Über uns**: Vision, Team, Standorte.
+- **Kontakt/Join Us**: CTAs, Newsletter, Socials.
+
+Inhaltlich:
+- Ton: aktivierend, verständlich, motivierend, inklusiv.
+- Fokus auf Nutzen für User: Weiterbildung, Community, Karriere, Innovation.
+- Storytelling: Success Stories & Zitate.
+- SEO-optimierte Inhalte, ausbaufähiges Glossar & Blog, lokale & long-tail Keywords.
+- Wireframe-Vorschlag folgt optional auf Wunsch.
+
+Fazit:
+Der STARTPLATZ AI Hub ist eine wachstumsstarke, community-orientierte KI-Initiative mit klarer Vision, starker Positionierung und viel Potenzial für digitale Sichtbarkeit. Die neue Website sollte diese Werte authentisch, inspirierend und strategisch abbilden.
