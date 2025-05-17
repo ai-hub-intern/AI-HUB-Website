@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startplatz AI Hub</title>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #8DC63F;
+            --dark-bg: #121212;
+            --light-text: #f0f0f0;
+            --dark-text: #333;
+            --card-bg: #1a1a1a;
+            --font-primary: 'Orbitron', sans-serif;
+            --font-secondary: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-primary);
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 5px;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #7CBF2F; /* Slightly darker green */
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        /* Header / Navbar */
+        #main-nav {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(141, 198, 63, 0.2);
+        }
+
+        #main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #main-nav .logo {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            display: flex;
+            align-items: center;
+        }
+        #main-nav .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+
+        #main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        #main-nav ul li {
+            margin-left: 20px;
+        }
+
+        #main-nav ul li a {
+            color: var(--light-text);
+            font-family: var(--font-secondary);
+            font-weight: bold;
+        }
+        #main-nav ul li a:hover {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--neon-green);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px; /* Account for fixed navbar */
+            background: radial-gradient(ellipse at bottom, rgba(141, 198, 63, 0.1), transparent 60%);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            text-shadow: 0 0 10px rgba(141, 198, 63, 0.5); /* Subtle neon glow */
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(141, 198, 63, 0.1);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--neon-green);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(141, 198, 63, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .card p {
+            flex-grow: 1; /* Makes paragraphs take available space */
+        }
+        .card .btn {
+            margin-top: auto; /* Pushes button to the bottom */
+            align-self: flex-start;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #ccc;
+        }
+        footer a:hover {
+            color: var(--neon-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #main-nav .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #main-nav ul {
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            #main-nav ul.active {
+                display: flex; /* Show when active */
+            }
+            #main-nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero p {
+                font-size: 1rem;
+            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+        }
+        
+        /* Easter Egg Style */
+        .easter-egg-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 15px 25px;
+            border-radius: 5px;
+            z-index: 2000;
+            font-family: var(--font-primary);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none; /* So it doesn't interfere with clicks */
+        }
+        .easter-egg-message.visible {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="main-nav">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <!-- IMPORTANT: User needs to upload aihublogo.png and update this path -->
+                <img src="assets/aihublogo.png" alt="Startplatz AI Hub Logo">
+                STARTPLATZ AI Hub
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#programs">Programme</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projekte</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#knowledge">Wissen & Blog</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <canvas id="hero-canvas"></canvas>
+            <div class="container">
+                <h1>KI-Innovation beginnt hier – Der Startplatz AI Hub</h1>
+                <p>Wir verbinden Unternehmen, Startups & Talente mit zukunftsweisender KI-Technologie. Entfache deine KI-Innovationsreise!</p>
+                <a href="#contact" class="btn">Jetzt mit uns durchstarten!</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Über den Startplatz AI Hub</h2>
+                <p>Der Startplatz AI Hub ist das führende Innovationszentrum für KI-gestützte Geschäftsmodelle. Unser Fokus: Startups, Corporates & Talente vernetzen, um mit KI echte Mehrwerte zu schaffen. Wir bieten ein starkes Ökosystem aus Expert:innen, Mentoren & Praxisprojekten.</p>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Unsere Mission</h3>
+                        <p>"Wir machen KI zugänglich! Unser Ziel ist es, Unternehmen und Startups zu befähigen, KI strategisch zu nutzen und innovative Lösungen zu entwickeln." Wir fördern Kollaboration zwischen Startups, etablierten Unternehmen und Tech-Enthusiasten, damit du gemeinsam mit uns die Zukunft der Künstlichen Intelligenz gestaltest.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Unsere Vision</h3>
+                        <p>"Wir wollen Europas führender KI-Hub für Business-Innovation werden und eine Brücke zwischen Wissenschaft und Praxis schlagen." 2024 ins Leben gerufen, verfolgt der STARTPLATZ AI Hub ein klares Ziel: ein offenes und starkes KI-Ökosystem in der Region aufzubauen.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Das Team & Netzwerk</h3>
+                        <p>Hinter dem AI Hub steht ein vielseitiges Team aus KI-Expert*innen, Unternehmern und Innovations-Enthusiasten. Unterstützt werden wir durch das starke Fundament von STARTPLATZ – dem führenden Startup-Inkubator und -Accelerator in NRW mit Standorten in Köln und Düsseldorf.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Unser USP – Das macht uns einzigartig</h3>
+                        <p>Ein ganzheitliches Angebot, das Weiterbildung, Networking und Beratung vereint. Ein starkes Netzwerk als Teil der STARTPLATZ-Familie. Regionale Verwurzelung mit globaler Perspektive und AZAV-zertifizierte Qualität für höchste Standards in der Weiterbildung.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs">
+            <div class="container">
+                <h2>Programme – Workshops, Bootcamps & mehr</h2>
+                <p>Im STARTPLATZ AI Hub findest du Programme für jedes Level – von Anfänger*in bis Profi. Unser Ansatz der KI-Weiterbildung ist praxisorientiert, flexibel und immer am Zahn der Zeit. Wähle das Format, das zu dir passt:</p>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>KI-Workshops</h3>
+                        <p>Tauche in kompakte Lerneinheiten ein. Unsere Workshops reichen vom Einsteigerkurs "KI-Einstieg für Alle" bis zur spezialisierten "Masterclass: Prompt Engineering". Lerne in kleinen Gruppen und sammle direkt erste Erfahrungen mit KI-Anwendungen. Ideal, um schnell und verständlich Know-how aufzubauen.</p>
+                    </div>
+                    <div class="card">
+                        <h3>KI-Bootcamps</h3>
+                        <p>Wenn du tiefer einsteigen möchtest: In intensiven mehrtägigen Programmen entwickelst du gemeinsam mit anderen Teilnehmenden ein eigenes KI-Projekt, begleitet von erfahrenen Coaches – von der Idee bis zum funktionierenden Prototypen.</p>
+                    </div>
+                    <div class="card">
+                        <h3>KI-Manager Weiterbildung</h3>
+                        <p>Werde zum zertifizierten KI-Manager! Dieses 8-wöchige Intensivprogramm (AZAV-zertifiziert und förderbar) richtet sich an alle, die KI strategisch im Unternehmen vorantreiben wollen. Erwirb umfassendes Wissen zu KI, Data Analytics und Change Management.</p>
+                    </div>
+                     <div class="card">
+                        <h3>AI Summer School</h3>
+                        <p>Sommer, Sonne, Software! In unserer AI Summer School tauchst du in entspannter Atmosphäre tief in aktuelle KI-Themen ein. Besonders für Studierende, Young Professionals und alle, die die freie Zeit für Weiterbildung nutzen möchten.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Inhouse & Individuelle Programme</h3>
+                        <p>Du suchst KI-Weiterbildung für dein Unternehmen? Wir kommen auch zu euch! Mit unseren AI-Inhouse Programmen entwickeln wir maßgeschneiderte Workshops und Trainings direkt für dein Team vor Ort, angepasst an eure Bedürfnisse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2>Unsere Dienstleistungen</h2>
+                <p>Unsere konkreten Services klar verständlich und ansprechend präsentiert:</p>
+                <div class="grid-container">
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>KI-Strategieberatung</h3>
+                        <p>Wo & wie KI im Business gewinnbringend eingesetzt werden kann.</p>
+                        <a href="#contact" class="btn">Mehr erfahren</a>
+                    </div>
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>Individuelle KI-Lösungen & Prototyping</h3>
+                        <p>Entwicklung von MVPs & skalierbaren KI-Produkten.</p>
+                        <a href="#contact" class="btn">Mehr erfahren</a>
+                    </div>
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>KI-Workshops & Trainings</h3>
+                        <p>Wissen aufbauen und Mitarbeitende fit für KI machen (siehe Programme).</p>
+                        <a href="#programs" class="btn">Zu den Programmen</a>
+                    </div>
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>Startups & Corporate Matchmaking</h3>
+                        <p>Vernetzung mit relevanten Playern aus der Branche.</p>
+                        <a href="#contact" class="btn">Mehr erfahren</a>
+                    </div>
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>KI-Inkubator & Accelerator Programme</h3>
+                        <p>Unterstützung für Startups von der frühen Phase bis zur Skalierung.</p>
+                        <a href="#contact" class="btn">Mehr erfahren</a>
+                    </div>
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <h3>Data Science & Machine Learning Projekte</h3>
+                        <p>Entwicklung von ML-Modellen & Datenanalysen.</p>
+                        <a href="#contact" class="btn">Mehr erfahren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projekte – Unsere Referenzen</h2>
+                <p>Wir arbeiten mit innovativen Unternehmen zusammen, um die Zukunft mit KI zu gestalten. Hier zeigen wir bald eine Auswahl unserer erfolgreichen Projekte und Case Studies.</p>
+                <p style="text-align:center; font-style: italic;">(Hier könnten Projektkacheln oder eine Case-Study-Galerie folgen.)</p>
+                 <div class="grid-container">
+                    <div class="card">
+                        <h3>Beispiel: Prozessautomatisierung Logistik</h3>
+                        <p>KI-gestützte Prozessautomatisierung für ein Logistikunternehmen zur Effizienzsteigerung.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Beispiel: Computer Vision Produktion</h3>
+                        <p>Computer Vision für die Qualitätssicherung in der industriellen Fertigung.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Beispiel: Predictive Analytics E-Commerce</h3>
+                        <p>Predictive Analytics für eine E-Commerce-Plattform zur Umsatzsteigerung und Kundenbindung.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                     <a href="#contact" class="btn">Interesse an einem KI-Projekt?</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="events">
+            <div class="container">
+                <h2>Events – AI Fridays, Hackathons & AI Gathering NRW</h2>
+                <p>Im STARTPLATZ AI Hub wird KI nicht nur gelernt, sondern auch gelebt! Unsere Events bringen die Community zusammen, bieten Bühne für neue Ideen und machen KI erfahrbar. Freu dich auf regelmäßige Veranstaltungen, die Wissen, Networking und Spaß verbinden.</p>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>AI Fridays</h3>
+                        <p>Jeden Freitag: Unsere wöchentlichen Meetup- und Workshop-Reihe in lockerer After-Work-Atmosphäre. Kostenlos und ideal für den ersten KI-Kontakt, mit Live-Demos und Mini-Workshops. Starte dein Wochenende mit Inspiration!</p>
+                    </div>
+                    <div class="card">
+                        <h3>AI Hackathons</h3>
+                        <p>Kreativität trifft Wettbewerbsgeist! Mehrmals im Jahr arbeiten bunt gemischte Teams 24-48 Stunden an KI-Challenges, entwickeln Prototypen und pitchen ihre Lösungen. Lerne neue Leute kennen und vertiefe deine Skills.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Global AI-Gathering.NRW</h3>
+                        <p>Unser großes Networking-Event für die Region und darüber hinaus. Hochkarätige Speaker, themenspezifische Workshops und viel Raum für persönliches Networking. Ein KI-Highlight in NRW, das du nicht verpassen solltest!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" style="background-color: var(--card-bg);">
+             <div class="container">
+                <h2>Testimonials – Was unsere Klienten sagen</h2>
+                <p>Vertrauen ist gut, echte Stimmen sind besser. Hier teilen bald unsere Partner und Kunden ihre Erfahrungen mit dem Startplatz AI Hub.</p>
+                <p style="text-align:center; font-style: italic;">(Hier könnten Zitat-Kacheln oder ein Logo-Slider folgen.)</p>
+                 <div class="grid-container">
+                    <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <p>"Die Zusammenarbeit mit dem Startplatz AI Hub hat unsere KI-Strategie auf ein neues Level gehoben. Absolut empfehlenswert!"</p>
+                        <p style="text-align:right; font-weight:bold; margin-top:1rem;">- Max Mustermann, CEO ExampleCorp</p>
+                    </div>
+                     <div class="card" style="background-color: var(--dark-bg); border-color: var(--neon-green);">
+                        <p>"Dank der praxisnahen Workshops konnten wir KI-Tools direkt in unserem Team implementieren. Großartiger Mehrwert!"</p>
+                        <p style="text-align:right; font-weight:bold; margin-top:1rem;">- Dr. Erika Beispiel, Innovationsmanagerin Tech GmbH</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community">
+            <div class="container">
+                <h2>Community – Mitgliedschaft, Coworking & Austausch</h2>
+                <p>Gemeinsam mehr erreichen: Im STARTPLATZ AI Hub glauben wir an die Macht der Community. Als Mitglied bist du Teil eines dynamischen Netzwerks aus Machern, Denkerinnen und Visionären. Wir bieten dir einen Ort, an dem Zusammenarbeit und Austausch großgeschrieben werden.</p>
+                 <div class="grid-container">
+                    <div class="card">
+                        <h3>Mitgliedschaft</h3>
+                        <p>Werde Teil der größten Startup- und Tech-Community in NRW! Profitiere von Zugang zu Coworking-Spaces, vergünstigten Events, Support unseres Teams und exklusiven Community-Veranstaltungen. </p>
+                    </div>
+                    <div class="card">
+                        <h3>Coworking & Infrastruktur</h3>
+                        <p>Arbeite dort, wo Innovation zu Hause ist. Unsere modernen Coworking-Bereiche in Köln und Düsseldorf bieten inspirierende Arbeitsatmosphäre, flexible Schreibtische, Meeting-Räume und schnelles Internet.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Austausch & Unterstützung</h3>
+                        <p>Unsere Community-Kultur ist offen und hilfsbereit. Teile dein Wissen, stelle Fragen und erhalte Unterstützung von Mitgliedern und Mentor*innen. Formate wie Community Lunch fördern den Austausch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge">
+            <div class="container">
+                <h2>Wissen & Blog – Lexikon, Tools & mehr</h2>
+                <p>Wissen ist zum Teilen da! In unserem Bereich "Wissen & Blog" stellen wir umfangreiche Ressourcen rund um Künstliche Intelligenz bereit, damit du dich auch außerhalb von Workshops und Events weiterbilden kannst.</p>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>KI-Lexikon</h3>
+                        <p>Ein Nachschlagewerk von A bis Z für alle Begriffe rund um KI und Generative AI. Verständliche Erklärungen, ideal für Einsteiger und Profis.</p>
+                    </div>
+                    <div class="card">
+                        <h3>AI-Tools & Use Cases</h3>
+                        <p>Eine ausgewählte Sammlung spannender KI-Tools, Plattformen und Frameworks. Inklusive Beschreibungen, Anwendungsbeispielen und Best Practices aus verschiedenen Branchen.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Blog & News</h3>
+                        <p>Regelmäßig frische Beiträge zu KI-Trends, Erfolgsgeschichten, How-to-Guides und Veranstaltungsberichte. Locker geschrieben und mit echtem Mehrwert. SEO-optimiert für leichte Auffindbarkeit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Kontakt & Join Us</h2>
+                <p>Du möchtest Teil des STARTPLATZ AI Hub werden oder hast Fragen? Wir freuen uns darauf, von dir zu hören!</p>
+                <div style="text-align: center;">
+                    <a href="mailto:info@startplatz-aihub.de?subject=Anfrage über Website" class="btn">Schreib uns eine E-Mail</a>
+                    <p style="margin-top: 1rem;">Oder folge uns auf Social Media!</p>
+                    <!-- Add social media links here -->
+                    <a href="#" style="margin: 0 10px; font-size:1.5rem;">LinkedIn</a>
+                    <a href="#" style="margin: 0 10px; font-size:1.5rem;">Twitter/X</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Startplatz AI Hub. Alle Rechte vorbehalten.</p>
+            <p>
+                <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
+            </p>
+            <p>Bitte ersetzen Sie #impressum und #datenschutz durch tatsächliche Links oder Seiten.</p>
+        </div>
+    </footer>
+    
+    <div class="easter-egg-message" id="easterEggMessage">🚀 AI Power Activated! 🚀</div>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // Navbar toggle for mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#nav-links li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Three.js Hero Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+
+        const particlesCount = 200;
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+        const particleGeometry = new THREE.BufferGeometry();
+        const particleMaterial = new THREE.PointsMaterial({ 
+            size: 0.05, 
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8
+        });
+        const neonGreen = new THREE.Color(0x8DC63F);
+        const white = new THREE.Color(0xffffff);
+
+        // Create a more structured network appearance
+        const layers = 3; // Number of layers in the neural network
+        const nodesPerLayer = Math.floor(Math.sqrt(particlesCount/layers)); // Approximate
+        const layerDepth = 4; // Distance between layers
+
+        let currentParticle = 0;
+        for (let l = 0; l < layers; l++) {
+            for (let i = 0; i < nodesPerLayer && currentParticle < particlesCount; i++) {
+                for (let j = 0; j < nodesPerLayer && currentParticle < particlesCount; j++) {
+                     if (currentParticle >= particlesCount) break;
+                    positions[currentParticle * 3] = (i - nodesPerLayer / 2) * 1.5; // X
+                    positions[currentParticle * 3 + 1] = (j - nodesPerLayer / 2) * 1.5; // Y
+                    positions[currentParticle * 3 + 2] = (l - layers / 2) * layerDepth; // Z
+                    
+                    const color = Math.random() > 0.2 ? neonGreen : white; // More green
+                    colors[currentParticle*3] = color.r;
+                    colors[currentParticle*3+1] = color.g;
+                    colors[currentParticle*3+2] = color.b;
+                    currentParticle++;
+                }
+            }
+        }
+        // Fill remaining particles randomly if any
+        for (let i = currentParticle; i < particlesCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+            const color = Math.random() > 0.2 ? neonGreen : white;
+            colors[i*3] = color.r;
+            colors[i*3+1] = color.g;
+            colors[i*3+2] = color.b;
+        }
+
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        // Connect particles within layers and to next layer (simplified)
+        for(let i = 0; i < particlesCount; i++) {
+            for (let j = i + 1; j < Math.min(i + 5, particlesCount); j++) { // Connect to a few nearby particles
+                 if (Math.random() > 0.8) { // Randomly skip some connections
+                    lineVertices.push(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+                    lineVertices.push(positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
+                }
+            }
+        }
+
+        lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lineVertices, 3));
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        camera.position.z = 8; // Zoom out a bit to see the structure
+
+        let pulseSpeed = 0.005;
+        let baseSize = 0.05;
+        let maxSize = 0.08;
+
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.0003; // Slower rotation
+            lines.rotation.y += 0.0003; // Slower rotation
+
+            // Pulsing effect for particles
+            const time = Date.now() * 0.001;
+            particleMaterial.size = baseSize + Math.sin(time * 2) * (maxSize - baseSize) * 0.5 + (maxSize - baseSize) * 0.5;
+
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Easter Egg (Konami Code)
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        const easterEggMessage = document.getElementById('easterEggMessage');
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    easterEggMessage.classList.add('visible');
+                    setTimeout(() => {
+                        easterEggMessage.classList.remove('visible');
+                    }, 3000);
+                    konamiIndex = 0; // Reset for another try
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+    </script>
+</body>
+</html> 
