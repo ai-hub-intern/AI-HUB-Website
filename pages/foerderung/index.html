@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI-Weiterbildung Förderung | Bildungsgutschein & QCG | STARTPLATZ AI Hub</title>
+  
+  <meta name="description" content="100% Förderung für KI-Weiterbildungen: Bildungsgutschein für Privatpersonen, QCG für Unternehmen. Wir helfen bei der Beantragung. Jetzt informieren!" />
+  <link rel="canonical" href="https://ai-hub.startplatz.de/pages/foerderung/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    :root {
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-primary: #9836FF;
+      --color-bg: #FAFBFC;
+      --color-surface: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+    }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(180deg, rgba(0, 181, 182, 0.08) 0%, transparent 100%);
+      padding: 160px 0 var(--space-16);
+      text-align: center;
+    }
+    
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.03em;
+    }
+    
+    .page-hero .lead {
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Funding Options */
+    .funding-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      margin: var(--space-16) 0;
+    }
+    
+    .funding-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .funding-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--color-teal);
+    }
+    
+    .funding-card.highlight {
+      border-color: var(--color-teal);
+      position: relative;
+    }
+    
+    .funding-card.highlight::before {
+      content: 'Meistgenutzt';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-teal);
+      color: white;
+      padding: 4px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .funding-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-6);
+      border-radius: 20px;
+      background: rgba(0, 181, 182, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: var(--color-teal);
+    }
+    
+    .funding-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .funding-card .for-who {
+      display: inline-block;
+      background: var(--color-bg);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+    }
+    
+    .funding-card p {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+      line-height: 1.7;
+    }
+    
+    .funding-percent {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-teal-dark);
+      margin-bottom: var(--space-2);
+    }
+    
+    .funding-percent span {
+      font-size: 1.5rem;
+    }
+    
+    .funding-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 91, 99, 0.3);
+    }
+    
+    .btn-secondary {
+      background: var(--color-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--color-teal);
+      color: var(--color-teal-dark);
+    }
+    
+    /* Process Steps */
+    .process-section {
+      padding: var(--space-20) 0;
+      background: var(--color-surface);
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-12);
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+    }
+    
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      right: -20%;
+      width: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-teal), transparent);
+    }
+    
+    .step-number {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-6);
+      border-radius: 50%;
+      background: var(--gradient-teal);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .step h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+    
+    .step p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* FAQ */
+    .faq-section {
+      padding: var(--space-20) 0;
+    }
+    
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    
+    .faq-item {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+    }
+    
+    .faq-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .faq-item h4 .ph {
+      color: var(--color-teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .faq-item p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      padding-left: 32px;
+    }
+    
+    /* CTA */
+    .cta-banner {
+      background: var(--gradient-teal);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      text-align: center;
+      color: white;
+      margin: var(--space-16) 0;
+    }
+    
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .cta-banner p {
+      opacity: 0.9;
+      margin-bottom: var(--space-8);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-banner .btn {
+      background: white;
+      color: var(--color-teal-dark);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .funding-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .step:not(:last-child)::after {
+        display: none;
+      }
+      
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/">
+        <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px;">
+      </a>
+      <div style="display: flex; gap: 24px; align-items: center;">
+        <a href="/" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Home</a>
+        <a href="/pages/weiterbildungen/" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Weiterbildungen</a>
+        <a href="/pages/foerderung/" style="color: var(--color-teal-dark); text-decoration: none; font-weight: 600;">Förderung</a>
+        <a href="#kontakt" class="btn btn-primary" style="padding: 10px 20px;">Beratung</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <h1>Bis zu <span style="color: var(--color-teal);">100% Förderung</span></h1>
+      <p class="lead">Ihre KI-Weiterbildung kann vollständig gefördert werden – ob Sie arbeitssuchend sind oder Ihr Unternehmen Mitarbeiter:innen qualifizieren möchte.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      
+      <!-- Funding Options -->
+      <section class="funding-options">
+        
+        <article class="funding-card highlight">
+          <div class="funding-icon">
+            <i class="ph ph-graduation-cap"></i>
+          </div>
+          <h3>Bildungsgutschein</h3>
+          <span class="for-who">Für Privatpersonen</span>
+          <p>Die Agentur für Arbeit oder das Jobcenter übernimmt die kompletten Kosten Ihrer Weiterbildung.</p>
+          <div class="funding-percent">100<span>%</span></div>
+          <div class="funding-label">Kostenübernahme</div>
+          <a href="/pages/foerderung/bildungsgutschein.html" class="btn btn-primary">
+            Mehr erfahren <i class="ph ph-arrow-right"></i>
+          </a>
+        </article>
+        
+        <article class="funding-card">
+          <div class="funding-icon">
+            <i class="ph ph-buildings"></i>
+          </div>
+          <h3>QCG-Förderung</h3>
+          <span class="for-who">Für Unternehmen</span>
+          <p>Das Qualifizierungschancengesetz fördert die Weiterbildung Ihrer Mitarbeiter:innen – inklusive Lohnkostenerstattung.</p>
+          <div class="funding-percent">100<span>%</span></div>
+          <div class="funding-label">für KMU möglich</div>
+          <a href="/pages/foerderung/qcg.html" class="btn btn-primary">
+            Mehr erfahren <i class="ph ph-arrow-right"></i>
+          </a>
+        </article>
+        
+        <article class="funding-card">
+          <div class="funding-icon">
+            <i class="ph ph-handshake"></i>
+          </div>
+          <h3>Arbeitsvermittler</h3>
+          <span class="for-who">Infos für Jobcenter</span>
+          <p>Sie sind Arbeitsvermittler:in? Hier finden Sie alle Infos zu unseren AZAV-zertifizierten Maßnahmen.</p>
+          <div class="funding-percent" style="font-size: 2rem;">AZAV</div>
+          <div class="funding-label">Zertifizierte Maßnahmen</div>
+          <a href="/pages/foerderung/arbeitsvermittler.html" class="btn btn-secondary">
+            Infos abrufen <i class="ph ph-arrow-right"></i>
+          </a>
+        </article>
+        
+      </section>
+      
+    </div>
+    
+    <!-- Process -->
+    <section class="process-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>So funktioniert die Förderung</h2>
+          <p>In 4 einfachen Schritten zu Ihrer geförderten KI-Weiterbildung</p>
+        </header>
+        
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Beratungsgespräch</h4>
+            <p>Wir besprechen Ihre Ziele und finden das passende Programm.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Förderantrag</h4>
+            <p>Wir unterstützen Sie bei der Beantragung des Bildungsgutscheins.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Gutschein einlösen</h4>
+            <p>Sie melden sich mit dem Gutschein bei uns an – alles geregelt.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Weiterbildung starten</h4>
+            <p>Sie starten Ihre Weiterbildung zum nächsten Termin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Häufige Fragen zur Förderung</h2>
+        </header>
+        
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4><i class="ph ph-question"></i> Wer bekommt einen Bildungsgutschein?</h4>
+            <p>Arbeitssuchende und von Arbeitslosigkeit bedrohte Personen. Auch Beschäftigte ohne Berufsabschluss oder mit veraltetem Wissen können einen Gutschein erhalten.</p>
+          </div>
+          <div class="faq-item">
+            <h4><i class="ph ph-question"></i> Wie lange dauert die Bewilligung?</h4>
+            <p>In der Regel 2-4 Wochen. Mit guter Vorbereitung und unserer Unterstützung kann es auch schneller gehen.</p>
+          </div>
+          <div class="faq-item">
+            <h4><i class="ph ph-question"></i> Was ist das QCG?</h4>
+            <p>Das Qualifizierungschancengesetz ermöglicht Unternehmen, Mitarbeiter:innen weiterzubilden und dabei Förderung für Kurskosten und Gehälter zu erhalten.</p>
+          </div>
+          <div class="faq-item">
+            <h4><i class="ph ph-question"></i> Sind Ihre Kurse zertifiziert?</h4>
+            <p>Ja, alle unsere Weiterbildungen sind AZAV-zertifiziert und damit für die Förderung mit Bildungsgutschein zugelassen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="container">
+      <!-- CTA -->
+      <section class="cta-banner">
+        <h2>Kostenlose Förderberatung</h2>
+        <p>Wir prüfen gemeinsam Ihre Fördermöglichkeiten und unterstützen Sie bei der Beantragung.</p>
+        <a href="#kontakt" class="btn">
+          <i class="ph ph-calendar"></i> Beratungstermin buchen
+        </a>
+      </section>
+    </div>
+    
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #0F172A; color: white; padding: 60px 0 40px;">
+    <div class="container" style="text-align: center;">
+      <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 24px;">
+      <p style="color: rgba(255,255,255,0.6);">© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI-Events & Workshops | STARTPLATZ AI Hub</title>
+  
+  <meta name="description" content="KI-Events in Köln & Düsseldorf: AI Friday (kostenlos), Info-Webinare, Workshops & Bootcamps. Jetzt anmelden und KI-Skills aufbauen!" />
+  <link rel="canonical" href="https://ai-hub.startplatz.de/pages/events/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    :root {
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-primary: #9836FF;
+      --color-bg: #FAFBFC;
+      --color-surface: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94A3B8;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --color-success: #10B981;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+    }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(180deg, rgba(0, 181, 182, 0.08) 0%, transparent 100%);
+      padding: 160px 0 var(--space-12);
+      text-align: center;
+    }
+    
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.03em;
+    }
+    
+    .page-hero .lead {
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Filters */
+    .filters-bar {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+      padding: var(--space-4) 0;
+    }
+    
+    .filter-btn {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--color-text-secondary);
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--color-teal);
+      background: rgba(0, 181, 182, 0.1);
+      color: var(--color-teal-dark);
+    }
+    
+    .filter-btn.active {
+      background: var(--color-teal);
+      color: white;
+      border-color: var(--color-teal);
+    }
+    
+    /* Events Grid */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-20);
+    }
+    
+    .event-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+    
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .event-image {
+      height: 180px;
+      background: linear-gradient(135deg, var(--color-teal-dark), var(--color-teal));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .event-image i {
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .event-badges {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .badge {
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .badge-free {
+      background: var(--color-success);
+      color: white;
+    }
+    
+    .badge-online {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-text);
+    }
+    
+    .badge-funded {
+      background: var(--color-primary);
+      color: white;
+    }
+    
+    .event-content {
+      padding: var(--space-6);
+    }
+    
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--color-teal-dark);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+    }
+    
+    .event-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+    
+    .event-card p {
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      margin-bottom: var(--space-4);
+      line-height: 1.6;
+    }
+    
+    .event-meta {
+      display: flex;
+      gap: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-tertiary);
+    }
+    
+    .meta-item .ph {
+      font-size: 16px;
+    }
+    
+    .event-cta {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 91, 99, 0.3);
+    }
+    
+    .btn-secondary {
+      background: var(--color-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--color-teal);
+    }
+    
+    /* Featured Event */
+    .featured-event {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-12);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-8);
+      align-items: center;
+      box-shadow: var(--shadow-xl);
+      border: 2px solid var(--color-teal);
+    }
+    
+    .featured-badge {
+      display: inline-block;
+      background: var(--gradient-teal);
+      color: white;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+    
+    .featured-event h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .featured-event p {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+      line-height: 1.7;
+    }
+    
+    .featured-visual {
+      background: linear-gradient(135deg, var(--color-teal-dark), var(--color-teal));
+      border-radius: var(--radius-xl);
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .featured-visual i {
+      font-size: 80px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Newsletter */
+    .newsletter-section {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    
+    .newsletter-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    
+    .newsletter-section p {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-3);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      font-size: 15px;
+    }
+    
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--color-teal);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .featured-event {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-visual {
+        height: 200px;
+      }
+      
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .filters-bar {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/">
+        <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px;">
+      </a>
+      <div style="display: flex; gap: 24px; align-items: center;">
+        <a href="/" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Home</a>
+        <a href="/pages/weiterbildungen/" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Weiterbildungen</a>
+        <a href="/pages/events/" style="color: var(--color-teal-dark); text-decoration: none; font-weight: 600;">Events</a>
+        <a href="#kontakt" class="btn btn-primary" style="padding: 10px 20px; flex: none;">Beratung</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <h1>Events & <span style="color: var(--color-teal);">Workshops</span></h1>
+      <p class="lead">Kostenlose AI Fridays, Info-Webinare und intensive Bootcamps. Finden Sie das passende Event für Ihren KI-Einstieg.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      
+      <!-- Filters -->
+      <div class="filters-bar">
+        <button class="filter-btn active" data-filter="all">Alle Events</button>
+        <button class="filter-btn" data-filter="free">Kostenlos</button>
+        <button class="filter-btn" data-filter="online">Online</button>
+        <button class="filter-btn" data-filter="koeln">Köln</button>
+        <button class="filter-btn" data-filter="duesseldorf">Düsseldorf</button>
+        <button class="filter-btn" data-filter="funded">Förderfähig</button>
+      </div>
+      
+      <!-- Featured Event -->
+      <article class="featured-event">
+        <div class="featured-content">
+          <span class="featured-badge"><i class="ph ph-star"></i> Nächster Termin</span>
+          <h2>AI Friday Köln</h2>
+          <p>Jeden Freitag treffen sich KI-Enthusiasten zum Austausch, Networking und gemeinsamen Lernen. Kostenlos und offen für alle Levels.</p>
+          <div class="event-meta" style="border: none; padding: 0; margin-bottom: var(--space-6);">
+            <span class="meta-item"><i class="ph ph-calendar"></i> Jeden Freitag, 15:00 Uhr</span>
+            <span class="meta-item"><i class="ph ph-map-pin"></i> STARTPLATZ Köln</span>
+          </div>
+          <a href="#" class="btn btn-primary" style="width: auto; padding: 14px 28px;">
+            <i class="ph ph-calendar-plus"></i> Jetzt anmelden
+          </a>
+        </div>
+        <div class="featured-visual">
+          <i class="ph ph-brain"></i>
+        </div>
+      </article>
+      
+      <!-- Events Grid -->
+      <section class="events-grid">
+        
+        <article class="event-card" data-tags="free koeln">
+          <div class="event-image">
+            <div class="event-badges">
+              <span class="badge badge-free">Kostenlos</span>
+            </div>
+            <i class="ph ph-users-three"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Fr, 13. Dez 2024 • 15:00 Uhr
+            </div>
+            <h3>AI Friday Köln</h3>
+            <p>Wöchentlicher Treffpunkt für KI-Interessierte. Networking, Demos und Austausch.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-map-pin"></i> STARTPLATZ Köln</span>
+              <span class="meta-item"><i class="ph ph-users"></i> 35 Plätze</span>
+            </div>
+            <div class="event-cta">
+              <a href="#" class="btn btn-primary">Anmelden</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="event-card" data-tags="free duesseldorf">
+          <div class="event-image" style="background: linear-gradient(135deg, #7B2BD9, #9836FF);">
+            <div class="event-badges">
+              <span class="badge badge-free">Kostenlos</span>
+            </div>
+            <i class="ph ph-users-three"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Fr, 13. Dez 2024 • 15:00 Uhr
+            </div>
+            <h3>AI Friday Düsseldorf</h3>
+            <p>KI-Community Treffen in Düsseldorf. Perfekt für Einsteiger und Fortgeschrittene.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-map-pin"></i> STARTPLATZ Düsseldorf</span>
+              <span class="meta-item"><i class="ph ph-users"></i> 25 Plätze</span>
+            </div>
+            <div class="event-cta">
+              <a href="#" class="btn btn-primary">Anmelden</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="event-card" data-tags="free online">
+          <div class="event-image" style="background: linear-gradient(135deg, #0369A1, #0EA5E9);">
+            <div class="event-badges">
+              <span class="badge badge-free">Kostenlos</span>
+              <span class="badge badge-online">Online</span>
+            </div>
+            <i class="ph ph-video-camera"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Di, 17. Dez 2024 • 18:00 Uhr
+            </div>
+            <h3>Info-Webinar: KI-Manager</h3>
+            <p>Alles über die KI-Manager Weiterbildung: Inhalte, Ablauf, Förderung und Karrierechancen.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-monitor"></i> Zoom</span>
+              <span class="meta-item"><i class="ph ph-clock"></i> 45 Min</span>
+            </div>
+            <div class="event-cta">
+              <a href="#" class="btn btn-primary">Anmelden</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="event-card" data-tags="free online">
+          <div class="event-image" style="background: linear-gradient(135deg, #B45309, #F59E0B);">
+            <div class="event-badges">
+              <span class="badge badge-free">Kostenlos</span>
+              <span class="badge badge-online">Online</span>
+            </div>
+            <i class="ph ph-video-camera"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Do, 19. Dez 2024 • 18:00 Uhr
+            </div>
+            <h3>Info-Webinar: AI-Automation</h3>
+            <p>Erfahren Sie, wie Sie mit KI Prozesse automatisieren. Förderung, Inhalte und nächste Schritte.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-monitor"></i> Zoom</span>
+              <span class="meta-item"><i class="ph ph-clock"></i> 45 Min</span>
+            </div>
+            <div class="event-cta">
+              <a href="#" class="btn btn-primary">Anmelden</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="event-card" data-tags="funded koeln">
+          <div class="event-image" style="background: linear-gradient(135deg, #005B63, #00B5B6);">
+            <div class="event-badges">
+              <span class="badge badge-funded">100% Förderung</span>
+            </div>
+            <i class="ph ph-brain"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Start: 06. Jan 2025
+            </div>
+            <h3>KI-Manager Bootcamp</h3>
+            <p>12-wöchiges Intensivprogramm zum zertifizierten KI-Manager. Vollzeit in Köln.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-map-pin"></i> Köln / Online</span>
+              <span class="meta-item"><i class="ph ph-clock"></i> 3 Monate</span>
+            </div>
+            <div class="event-cta">
+              <a href="/pages/weiterbildungen/ki-manager.html" class="btn btn-primary">Details</a>
+              <a href="/pages/foerderung/" class="btn btn-secondary">Förderung</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="event-card" data-tags="funded koeln">
+          <div class="event-image" style="background: linear-gradient(135deg, #7B2BD9, #9836FF);">
+            <div class="event-badges">
+              <span class="badge badge-funded">100% Förderung</span>
+            </div>
+            <i class="ph ph-robot"></i>
+          </div>
+          <div class="event-content">
+            <div class="event-date">
+              <i class="ph ph-calendar"></i> Start: 20. Jan 2025
+            </div>
+            <h3>AI-Automation Bootcamp</h3>
+            <p>8-wöchiges Programm für Prozessautomation mit KI. Python, APIs und No-Code Tools.</p>
+            <div class="event-meta">
+              <span class="meta-item"><i class="ph ph-map-pin"></i> Köln / Online</span>
+              <span class="meta-item"><i class="ph ph-clock"></i> 2 Monate</span>
+            </div>
+            <div class="event-cta">
+              <a href="/pages/weiterbildungen/ai-automation.html" class="btn btn-primary">Details</a>
+              <a href="/pages/foerderung/" class="btn btn-secondary">Förderung</a>
+            </div>
+          </div>
+        </article>
+        
+      </section>
+      
+      <!-- Newsletter -->
+      <section class="newsletter-section">
+        <h3>Kein Event verpassen</h3>
+        <p>Erhalten Sie Updates zu neuen Events und Terminen direkt in Ihr Postfach.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+          <button type="submit" class="btn btn-primary" style="flex: none;">Anmelden</button>
+        </form>
+      </section>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #0F172A; color: white; padding: 60px 0 40px;">
+    <div class="container" style="text-align: center;">
+      <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 24px;">
+      <p style="color: rgba(255,255,255,0.6);">© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.event-card').forEach(card => {
+          if (filter === 'all' || card.dataset.tags.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
