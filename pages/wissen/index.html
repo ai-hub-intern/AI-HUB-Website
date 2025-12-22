@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI-Wissen & Blog | Artikel, Guides & Ressourcen | STARTPLATZ AI Hub</title>
+  
+  <meta name="description" content="Entdecke unser KI-Wissen: Förderung erklärt, KI-Jobprofile, Kurs-Inhalte und aktuelle Blog-Artikel. Dein Wissenshub für KI-Karriere." />
+  <link rel="canonical" href="https://ai-hub.startplatz.de/pages/wissen/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    :root {
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-primary: #9836FF;
+      --color-bg: #FAFBFC;
+      --color-surface: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94A3B8;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Hero */
+    .hero {
+      background: linear-gradient(180deg, rgba(0, 181, 182, 0.06) 0%, var(--color-bg) 100%);
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    /* Search */
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 18px 24px 18px 56px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      font-size: 16px;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--color-teal);
+    }
+    
+    .search-box i {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--color-text-tertiary);
+    }
+    
+    /* Categories */
+    .categories {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .category-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--color-teal);
+    }
+    
+    .category-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(0, 181, 182, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--color-teal);
+      margin-bottom: 20px;
+    }
+    
+    .category-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .category-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+    }
+    
+    .category-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-teal-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Featured Articles */
+    .featured {
+      padding: 80px 0;
+      background: var(--color-surface);
+    }
+    
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 32px;
+    }
+    
+    .featured-main {
+      background: var(--gradient-teal);
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-main::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at top right, rgba(255,255,255,0.1) 0%, transparent 60%);
+    }
+    
+    .featured-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    
+    .featured-main h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    
+    .featured-main p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+      max-width: 400px;
+      position: relative;
+    }
+    
+    .featured-main .btn {
+      background: white;
+      color: var(--color-teal-dark);
+      padding: 14px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      position: relative;
+    }
+    
+    .featured-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .featured-small {
+      flex: 1;
+      background: var(--color-bg);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .featured-small:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-teal);
+    }
+    
+    .featured-small .category-tag {
+      display: inline-block;
+      background: rgba(0, 181, 182, 0.1);
+      color: var(--color-teal-dark);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .featured-small h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .featured-small p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    /* Blog Grid */
+    .blog-section {
+      padding: 80px 0;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .blog-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .blog-image {
+      height: 180px;
+      background: var(--gradient-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .blog-image i {
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .blog-content {
+      padding: 24px;
+    }
+    
+    .blog-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+    }
+    
+    .blog-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .blog-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* Newsletter */
+    .newsletter {
+      padding: 80px 0;
+      background: var(--color-surface);
+    }
+    
+    .newsletter-card {
+      background: var(--gradient-teal);
+      border-radius: var(--radius-2xl);
+      padding: 64px;
+      text-align: center;
+      color: white;
+    }
+    
+    .newsletter-card h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .newsletter-card p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 16px 24px;
+      border-radius: var(--radius-full);
+      border: none;
+      font-size: 15px;
+    }
+    
+    .newsletter-form button {
+      background: white;
+      color: var(--color-teal-dark);
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #0F172A;
+      color: white;
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    
+    .footer img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 24px;
+    }
+    
+    .footer p {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .categories-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 640px) {
+      .newsletter-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/"><img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px;"></a>
+      <div class="nav-links">
+        <a href="/pages/weiterbildungen/">Programme</a>
+        <a href="/pages/wissen/" style="color: var(--color-teal-dark); font-weight: 600;">Wissen</a>
+        <a href="/pages/events/">Events</a>
+        <a href="#kontakt" class="btn btn-primary">Beratung</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Wissen & <span style="color: var(--color-teal);">Ressourcen</span></h1>
+      <p>Alles, was du über KI-Weiterbildungen, Förderungen und Karrieremöglichkeiten wissen musst.</p>
+      
+      <div class="search-box">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="search" placeholder="Suche nach Artikeln, Guides, FAQs...">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Categories -->
+    <section class="categories">
+      <div class="container">
+        <header class="section-header">
+          <h2>Themen entdecken</h2>
+        </header>
+        
+        <div class="categories-grid">
+          <a href="/pages/wissen/foerderung-erklaert.html" class="category-card">
+            <div class="category-icon"><i class="ph ph-certificate"></i></div>
+            <h3>Förderung erklärt</h3>
+            <p>Bildungsgutschein, QCG und weitere Fördermöglichkeiten einfach erklärt.</p>
+            <span class="category-link">Mehr erfahren <i class="ph ph-arrow-right"></i></span>
+          </a>
+          
+          <a href="/pages/wissen/ki-jobprofile.html" class="category-card">
+            <div class="category-icon"><i class="ph ph-briefcase"></i></div>
+            <h3>KI & neue Jobprofile</h3>
+            <p>Welche Karrierewege eröffnen sich durch KI-Kompetenzen?</p>
+            <span class="category-link">Mehr erfahren <i class="ph ph-arrow-right"></i></span>
+          </a>
+          
+          <a href="/pages/wissen/kursinhalte.html" class="category-card">
+            <div class="category-icon"><i class="ph ph-book-open"></i></div>
+            <h3>Kursinhalte</h3>
+            <p>Detaillierte Einblicke in unsere KI-Manager und AI-Automation Programme.</p>
+            <span class="category-link">Mehr erfahren <i class="ph ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured -->
+    <section class="featured">
+      <div class="container">
+        <header class="section-header">
+          <h2>Empfohlene Artikel</h2>
+        </header>
+        
+        <div class="featured-grid">
+          <article class="featured-main">
+            <span class="featured-badge">Neu</span>
+            <h3>Der komplette Guide zum Bildungsgutschein 2025</h3>
+            <p>Alles, was du wissen musst: Voraussetzungen, Antrag, Dauer und wie wir dich unterstützen.</p>
+            <a href="/pages/foerderung/bildungsgutschein.html" class="btn">
+              Jetzt lesen <i class="ph ph-arrow-right"></i>
+            </a>
+          </article>
+          
+          <div class="featured-sidebar">
+            <a href="#" class="featured-small">
+              <span class="category-tag">Karriere</span>
+              <h4>KI-Manager: Das neue Berufsbild der Zukunft</h4>
+              <p>Warum Unternehmen händeringend nach KI-Kompetenz suchen.</p>
+            </a>
+            <a href="#" class="featured-small">
+              <span class="category-tag">Praxis</span>
+              <h4>5 ChatGPT-Prompts für den Arbeitsalltag</h4>
+              <p>Sofort einsetzbare Prompts für mehr Produktivität.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Blog Grid -->
+    <section class="blog-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Neueste Artikel</h2>
+        </header>
+        
+        <div class="blog-grid">
+          <a href="#" class="blog-card">
+            <div class="blog-image" style="background: linear-gradient(135deg, #7B2BD9, #9836FF);">
+              <i class="ph ph-robot"></i>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="ph ph-calendar"></i> 12. Dez 2024</span>
+                <span><i class="ph ph-clock"></i> 5 Min</span>
+              </div>
+              <h4>AI-Automation: Welche Prozesse lohnen sich?</h4>
+              <p>Ein Leitfaden zur Identifizierung von Automatisierungspotenzial in deinem Unternehmen.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="blog-card">
+            <div class="blog-image">
+              <i class="ph ph-graduation-cap"></i>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="ph ph-calendar"></i> 8. Dez 2024</span>
+                <span><i class="ph ph-clock"></i> 8 Min</span>
+              </div>
+              <h4>Weiterbildung mit 40+: Warum es nie zu spät ist</h4>
+              <p>Erfolgsgeschichten von Teilnehmern, die ihre Karriere mit KI neu erfunden haben.</p>
+            </div>
+          </a>
+          
+          <a href="#" class="blog-card">
+            <div class="blog-image" style="background: linear-gradient(135deg, #EA580C, #F97316);">
+              <i class="ph ph-lightbulb"></i>
+            </div>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span><i class="ph ph-calendar"></i> 4. Dez 2024</span>
+                <span><i class="ph ph-clock"></i> 6 Min</span>
+              </div>
+              <h4>Von 0 auf KI: Mein Weg durch den KI-Start</h4>
+              <p>Ein Teilnehmerbericht über 8 Wochen, die alles verändert haben.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-card">
+          <h2>KI-Insights direkt ins Postfach</h2>
+          <p>Wöchentliche Updates zu KI-Trends, Förderungen und Events.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Deine E-Mail-Adresse" required>
+            <button type="submit">Abonnieren</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB">
+      <p>© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+

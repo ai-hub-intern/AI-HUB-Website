@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über uns | Team, Mission & Geschichte | STARTPLATZ AI Hub</title>
+  
+  <meta name="description" content="Lerne das Team hinter STARTPLATZ AI Hub kennen. 15+ Jahre Erfahrung, 10.000+ Event-Teilnehmer, 1.500+ Startups unterstützt." />
+  <link rel="canonical" href="https://ai-hub.startplatz.de/pages/ueber-uns/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    :root {
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-primary: #9836FF;
+      --color-bg: #FAFBFC;
+      --color-surface: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94A3B8;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Hero */
+    .hero {
+      background: var(--gradient-teal);
+      color: white;
+      padding: 160px 0 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* Stats Bar */
+    .stats-bar {
+      background: var(--color-surface);
+      padding: 48px 0;
+      margin-top: -60px;
+      position: relative;
+      z-index: 2;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-teal-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    /* Mission Section */
+    .mission {
+      padding: 120px 0;
+    }
+    
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    
+    .mission-content h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .mission-content p {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    
+    .mission-visual {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: 48px;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .mission-quote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      position: relative;
+      padding-left: 24px;
+      border-left: 4px solid var(--color-teal);
+    }
+    
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .quote-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--gradient-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    
+    .quote-author h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .quote-author p {
+      font-size: 14px;
+      color: var(--color-text-tertiary);
+      margin: 0;
+    }
+    
+    /* Team Section */
+    .team {
+      padding: 100px 0;
+      background: var(--color-surface);
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    
+    .team-card {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--color-bg);
+      border-radius: var(--radius-2xl);
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .team-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: var(--gradient-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.3);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .team-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .team-card .role {
+      font-size: 14px;
+      color: var(--color-teal-dark);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .team-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    
+    .team-socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .team-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+    
+    .team-socials a:hover {
+      background: var(--color-teal);
+      color: white;
+    }
+    
+    /* Values */
+    .values {
+      padding: 100px 0;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    
+    .value-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      text-align: center;
+    }
+    
+    .value-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      border-radius: 20px;
+      background: rgba(0, 181, 182, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--color-teal);
+    }
+    
+    .value-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .value-card p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* Locations */
+    .locations {
+      padding: 100px 0;
+      background: var(--color-surface);
+    }
+    
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    
+    .location-card {
+      background: var(--color-bg);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+    }
+    
+    .location-image {
+      height: 200px;
+      background: var(--gradient-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .location-image i {
+      font-size: 64px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .location-content {
+      padding: 32px;
+    }
+    
+    .location-content h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .location-content p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .location-content p .ph {
+      color: var(--color-teal);
+    }
+    
+    /* CTA */
+    .cta-section {
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 32px;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 91, 99, 0.3);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 91, 99, 0.95);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+    
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover {
+      color: white;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #0F172A;
+      color: white;
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    
+    .footer img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 24px;
+    }
+    
+    .footer p {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .mission-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .values-grid { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/"><img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px; filter: brightness(0) invert(1);"></a>
+      <div class="nav-links">
+        <a href="/pages/weiterbildungen/">Programme</a>
+        <a href="/pages/ueber-uns/" style="color: white;">Über uns</a>
+        <a href="/pages/events/">Events</a>
+        <a href="#kontakt" class="btn" style="background: white; color: var(--color-teal-dark); padding: 10px 20px;">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Wir machen Menschen KI-fit</h1>
+      <p>Seit über 15 Jahren begleitet STARTPLATZ Innovatoren auf ihrem Weg. Mit dem AI Hub bringen wir KI-Kompetenz in jedes Unternehmen und jede Karriere.</p>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Jahre Erfahrung</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10.000+</div>
+          <div class="stat-label">Event-Teilnehmer</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1.500+</div>
+          <div class="stat-label">Startups unterstützt</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4.98</div>
+          <div class="stat-label">Bewertung (290+)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    
+    <!-- Mission -->
+    <section class="mission">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-content">
+            <h2>Unsere Mission</h2>
+            <p>KI verändert die Arbeitswelt fundamental. Wir glauben, dass jeder Mensch – unabhängig von Vorwissen oder Hintergrund – die Chance verdient, von dieser Transformation zu profitieren.</p>
+            <p>Deshalb haben wir den STARTPLATZ AI Hub gegründet: Ein Ort, an dem KI-Kompetenz praxisnah vermittelt wird, geförderte Weiterbildungen zugänglich gemacht werden und eine Community aus Gleichgesinnten entsteht.</p>
+            <p>Unser Ziel: 100.000 Menschen bis 2030 KI-fit machen.</p>
+          </div>
+          <div class="mission-visual">
+            <p class="mission-quote">"KI ist keine Bedrohung – sie ist die größte Chance unserer Zeit. Wir helfen Menschen, sie zu nutzen."</p>
+            <div class="quote-author">
+              <div class="quote-avatar">JS</div>
+              <div>
+                <h4>Jakow Smirin</h4>
+                <p>CEO, STARTPLATZ AI Hub</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+      <div class="container">
+        <header class="section-header">
+          <h2>Das Team hinter dem AI Hub</h2>
+          <p>Erfahrene KI-Praktiker, Trainer und Innovatoren</p>
+        </header>
+        
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar"><i class="ph ph-user"></i></div>
+            <h4>Jakow Smirin</h4>
+            <p class="role">CEO AI Hub</p>
+            <p>Erfahrener KI-Experte und Leiter des STARTPLATZ AI Hub. Gestaltet die Zukunft der KI-Ausbildung.</p>
+            <div class="team-socials">
+              <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-avatar"><i class="ph ph-user"></i></div>
+            <h4>Lukas</h4>
+            <p class="role">Chief Evangelist</p>
+            <p>Hat über 5.000 Menschen den Einstieg in KI ermöglicht und zahlreiche Startups unterstützt.</p>
+            <div class="team-socials">
+              <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-avatar"><i class="ph ph-user"></i></div>
+            <h4>Armin Taban</h4>
+            <p class="role">Beratung & Sales</p>
+            <p>Begleitet Interessenten vom ersten Gespräch bis zum erfolgreichen Kursabschluss.</p>
+            <div class="team-socials">
+              <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-avatar"><i class="ph ph-user"></i></div>
+            <h4>Ken</h4>
+            <p class="role">Lead Trainer</p>
+            <p>Entwickelt Curricula und leitet die praktischen Workshops im AI-Automation Programm.</p>
+            <div class="team-socials">
+              <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+      <div class="container">
+        <header class="section-header">
+          <h2>Unsere Werte</h2>
+          <p>Was uns antreibt und leitet</p>
+        </header>
+        
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="ph ph-hands-clapping"></i></div>
+            <h4>Praxis vor Theorie</h4>
+            <p>Wir glauben an Learning by Doing. Jede Session hat einen praktischen Output, den du sofort nutzen kannst.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="ph ph-users"></i></div>
+            <h4>Community First</h4>
+            <p>Lernen ist besser gemeinsam. Unsere Alumni-Community unterstützt sich gegenseitig – über den Kurs hinaus.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="ph ph-rocket"></i></div>
+            <h4>Zugänglichkeit</h4>
+            <p>KI-Bildung sollte für alle zugänglich sein. Deshalb setzen wir uns für geförderte Weiterbildungen ein.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations">
+      <div class="container">
+        <header class="section-header">
+          <h2>Unsere Standorte</h2>
+          <p>Vor Ort in NRW, digital überall</p>
+        </header>
+        
+        <div class="locations-grid">
+          <article class="location-card">
+            <div class="location-image">
+              <i class="ph ph-buildings"></i>
+            </div>
+            <div class="location-content">
+              <h4>Köln</h4>
+              <p><i class="ph ph-map-pin"></i> Im Mediapark 5, 50670 Köln</p>
+              <p><i class="ph ph-phone"></i> 0221 - 96881273</p>
+              <p><i class="ph ph-envelope"></i> ai-hub@startplatz.de</p>
+            </div>
+          </article>
+          
+          <article class="location-card">
+            <div class="location-image" style="background: linear-gradient(135deg, #7B2BD9, #9836FF);">
+              <i class="ph ph-buildings"></i>
+            </div>
+            <div class="location-content">
+              <h4>Düsseldorf</h4>
+              <p><i class="ph ph-map-pin"></i> Speditionstraße 15a, 40221 Düsseldorf</p>
+              <p><i class="ph ph-phone"></i> 0211 - 54085580</p>
+              <p><i class="ph ph-envelope"></i> ai-hub@startplatz.de</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="kontakt">
+      <div class="container">
+        <h2>Werde Teil unserer Geschichte</h2>
+        <p>Ob als Teilnehmer, Partner oder Teammitglied – wir freuen uns auf dich.</p>
+        <a href="tel:+4922196881273" class="btn btn-primary">
+          <i class="ph ph-phone"></i> 0221 - 96881273 anrufen
+        </a>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB">
+      <p>© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bildungsgutschein für KI-Weiterbildung | 100% Förderung | STARTPLATZ AI Hub</title>
+  
+  <meta name="description" content="Mit dem Bildungsgutschein 100% gefördert zum KI-Experten. Wir helfen dir bei der Beantragung. AZAV-zertifizierte Kurse für Arbeitssuchende." />
+  <meta name="keywords" content="Bildungsgutschein KI, Weiterbildung Arbeitsamt, AZAV Zertifizierung, geförderte KI Kurse, Arbeitsagentur Weiterbildung" />
+  <link rel="canonical" href="https://ai-hub.startplatz.de/pages/foerderung/bildungsgutschein.html" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    :root {
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-primary: #9836FF;
+      --color-bg: #FAFBFC;
+      --color-surface: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94A3B8;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --color-success: #10B981;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Hero */
+    .hero {
+      background: var(--gradient-teal);
+      color: white;
+      padding: 160px 0 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      background: radial-gradient(ellipse at center top, rgba(255,255,255,0.1) 0%, transparent 60%);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn-white {
+      background: white;
+      color: var(--color-teal-dark);
+    }
+    
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 91, 99, 0.3);
+    }
+    
+    /* Stats */
+    .stats-bar {
+      background: var(--color-surface);
+      padding: 40px 0;
+      margin-top: -60px;
+      position: relative;
+      z-index: 2;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-teal-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    /* What is it */
+    .what-section {
+      padding: 100px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+    
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+    }
+    
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    
+    .info-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+    }
+    
+    .info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .info-card h3 .ph {
+      font-size: 28px;
+      color: var(--color-teal);
+    }
+    
+    .info-card p {
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* Eligibility */
+    .eligibility-section {
+      padding: 100px 0;
+      background: var(--color-surface);
+    }
+    
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+    
+    .eligibility-card {
+      background: var(--color-bg);
+      border-radius: var(--radius-2xl);
+      padding: 40px;
+    }
+    
+    .eligibility-card.yes {
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .eligibility-card.maybe {
+      border: 2px solid rgba(245, 158, 11, 0.3);
+    }
+    
+    .eligibility-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .eligibility-card.yes h3 {
+      color: var(--color-success);
+    }
+    
+    .eligibility-card.maybe h3 {
+      color: #F59E0B;
+    }
+    
+    .eligibility-list {
+      list-style: none;
+    }
+    
+    .eligibility-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    
+    .eligibility-list li .ph {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .eligibility-card.yes .eligibility-list li .ph {
+      color: var(--color-success);
+    }
+    
+    .eligibility-card.maybe .eligibility-list li .ph {
+      color: #F59E0B;
+    }
+    
+    /* Process */
+    .process-section {
+      padding: 100px 0;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-teal), var(--color-primary));
+      border-radius: 2px;
+    }
+    
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-number {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: var(--gradient-teal);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .process-step h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .process-step p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    
+    /* Programs */
+    .programs-section {
+      padding: 100px 0;
+      background: var(--color-surface);
+    }
+    
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .program-card {
+      background: var(--color-bg);
+      border-radius: var(--radius-2xl);
+      padding: 32px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-teal);
+    }
+    
+    .program-badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--color-success);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .program-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .program-card .duration {
+      font-size: 14px;
+      color: var(--color-teal-dark);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .program-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .program-link {
+      color: var(--color-teal-dark);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+    
+    .program-link:hover {
+      gap: 10px;
+    }
+    
+    /* FAQ */
+    .faq-section {
+      padding: 100px 0;
+    }
+    
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: 24px 0;
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 16px;
+    }
+    
+    .faq-question h4 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .faq-question .ph {
+      font-size: 24px;
+      color: var(--color-teal);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.open .faq-question .ph {
+      transform: rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    
+    .faq-answer p {
+      padding-top: 16px;
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* CTA */
+    .cta-section {
+      padding: 100px 0;
+      background: var(--gradient-teal);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-section .btn {
+      background: white;
+      color: var(--color-teal-dark);
+    }
+    
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 91, 99, 0.95);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+    
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+    }
+    
+    .nav-links a:hover {
+      color: white;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #0F172A;
+      color: white;
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    
+    .footer img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 24px;
+    }
+    
+    .footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .info-cards { grid-template-columns: 1fr; }
+      .eligibility-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 640px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/"><img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB" style="height: 40px; filter: brightness(0) invert(1);"></a>
+      <div class="nav-links">
+        <a href="/pages/weiterbildungen/">Programme</a>
+        <a href="/pages/foerderung/">Alle Förderungen</a>
+        <a href="tel:+4922196881273"><i class="ph ph-phone"></i> 0221 - 96881273</a>
+        <a href="#beratung" class="btn btn-white" style="padding: 10px 20px;">Beratung buchen</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <i class="ph ph-certificate"></i>
+          AZAV-zertifizierte Weiterbildungen
+        </span>
+        <h1>Deine KI-Weiterbildung – 100% gefördert</h1>
+        <p>Mit dem Bildungsgutschein der Agentur für Arbeit oder des Jobcenters übernimmt der Staat die kompletten Kosten deiner Weiterbildung. Wir helfen dir bei der Beantragung.</p>
+        <div class="hero-cta">
+          <a href="#beratung" class="btn btn-white">
+            <i class="ph ph-calendar"></i> Kostenlose Beratung buchen
+          </a>
+          <a href="#prozess" class="btn btn-outline">
+            <i class="ph ph-info"></i> So funktioniert's
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Kostenübernahme</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2-4</div>
+          <div class="stat-label">Wochen Bearbeitungszeit</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">290+</div>
+          <div class="stat-label">Erfolgreiche Teilnehmer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    
+    <!-- What is it -->
+    <section class="what-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Was ist der Bildungsgutschein?</h2>
+          <p>Ein Förderinstrument, das deine berufliche Weiterbildung finanziert</p>
+        </header>
+        
+        <div class="info-cards">
+          <div class="info-card">
+            <h3><i class="ph ph-money"></i> Volle Kostenübernahme</h3>
+            <p>Die Agentur für Arbeit oder das Jobcenter übernimmt 100% der Weiterbildungskosten. Du zahlst keinen Cent – weder für den Kurs noch für Materialien.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="ph ph-hand-coins"></i> Weiterhin ALG I/II</h3>
+            <p>Während der Weiterbildung beziehst du weiterhin dein Arbeitslosengeld. Bei Bedarf werden auch Fahrt- und Kinderbetreuungskosten übernommen.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="ph ph-certificate"></i> AZAV-Zertifizierung</h3>
+            <p>Unsere Kurse sind AZAV-zertifiziert – das ist die Voraussetzung dafür, dass sie mit Bildungsgutschein gefördert werden können.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="ph ph-rocket-launch"></i> Karriere-Boost</h3>
+            <p>KI-Kompetenzen sind auf dem Arbeitsmarkt gefragt wie nie. Mit der Weiterbildung verbesserst du deine Jobchancen erheblich.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility -->
+    <section class="eligibility-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Wer bekommt den Bildungsgutschein?</h2>
+          <p>Prüfe, ob du die Voraussetzungen erfüllst</p>
+        </header>
+        
+        <div class="eligibility-grid">
+          <div class="eligibility-card yes">
+            <h3><i class="ph ph-check-circle"></i> Du erfüllst die Voraussetzungen, wenn du...</h3>
+            <ul class="eligibility-list">
+              <li><i class="ph ph-check"></i> Arbeitssuchend gemeldet bist</li>
+              <li><i class="ph ph-check"></i> Von Arbeitslosigkeit bedroht bist</li>
+              <li><i class="ph ph-check"></i> Keinen Berufsabschluss hast</li>
+              <li><i class="ph ph-check"></i> Deinen Berufsabschluss > 4 Jahre nicht genutzt hast</li>
+              <li><i class="ph ph-check"></i> In einem Beruf arbeitest, der vom Strukturwandel betroffen ist</li>
+            </ul>
+          </div>
+          
+          <div class="eligibility-card maybe">
+            <h3><i class="ph ph-warning-circle"></i> Auch möglich, wenn du...</h3>
+            <ul class="eligibility-list">
+              <li><i class="ph ph-arrow-right"></i> Beschäftigt bist, aber deine Qualifikation veraltet ist</li>
+              <li><i class="ph ph-arrow-right"></i> Eine Umschulung anstrebst</li>
+              <li><i class="ph ph-arrow-right"></i> In Teilzeit arbeitest und dich weiterbilden möchtest</li>
+              <li><i class="ph ph-arrow-right"></i> Nach Elternzeit wieder einsteigen willst</li>
+            </ul>
+            <p style="margin-top: 20px; font-size: 14px; color: var(--color-text-secondary);">
+              Unsicher? <a href="#beratung" style="color: var(--color-teal-dark); font-weight: 600;">Lass uns gemeinsam prüfen →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section" id="prozess">
+      <div class="container">
+        <header class="section-header">
+          <h2>In 4 Schritten zum Bildungsgutschein</h2>
+          <p>Wir begleiten dich durch den gesamten Prozess</p>
+        </header>
+        
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h4>Beratung bei uns</h4>
+            <p>Wir besprechen deine Ziele, finden das passende Programm und bereiten dich auf das Gespräch mit der Arbeitsagentur vor.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h4>Termin bei der Arbeitsagentur</h4>
+            <p>Du sprichst mit deinem Berater über die Weiterbildung. Wir geben dir alle Unterlagen und Argumente an die Hand.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h4>Gutschein erhalten</h4>
+            <p>Nach positiver Prüfung erhältst du den Bildungsgutschein – meist innerhalb von 2-4 Wochen.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h4>Weiterbildung starten</h4>
+            <p>Du meldest dich mit dem Gutschein bei uns an und startest zum nächsten Termin deine KI-Weiterbildung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="programs-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Förderfähige Programme</h2>
+          <p>Diese Weiterbildungen kannst du mit Bildungsgutschein buchen</p>
+        </header>
+        
+        <div class="programs-grid">
+          <article class="program-card">
+            <span class="program-badge"><i class="ph ph-check"></i> Förderfähig</span>
+            <h4>KI-Manager</h4>
+            <p class="duration">12 Wochen Vollzeit / 24 Wochen Teilzeit</p>
+            <p>Werde zum Experten für KI-Strategie und -Implementierung in Unternehmen.</p>
+            <a href="/pages/weiterbildungen/ki-manager.html" class="program-link">
+              Mehr erfahren <i class="ph ph-arrow-right"></i>
+            </a>
+          </article>
+          
+          <article class="program-card">
+            <span class="program-badge"><i class="ph ph-check"></i> Förderfähig</span>
+            <h4>AI-Automation</h4>
+            <p class="duration">1 Woche Intensiv / 8 Wochen Teilzeit</p>
+            <p>Automatisiere Geschäftsprozesse mit KI, n8n und APIs.</p>
+            <a href="/pages/weiterbildungen/ai-automation.html" class="program-link">
+              Mehr erfahren <i class="ph ph-arrow-right"></i>
+            </a>
+          </article>
+          
+          <article class="program-card">
+            <span class="program-badge"><i class="ph ph-check"></i> Förderfähig</span>
+            <h4>KI-Start</h4>
+            <p class="duration">2 Wochen / 8 Wochen Teilzeit</p>
+            <p>Der perfekte Einstieg in die KI-Welt für Orientierung und erste Skills.</p>
+            <a href="/pages/weiterbildungen/ki-start.html" class="program-link">
+              Mehr erfahren <i class="ph ph-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Häufige Fragen zum Bildungsgutschein</h2>
+        </header>
+        
+        <div class="faq-grid">
+          <div class="faq-item open">
+            <div class="faq-question">
+              <h4>Wie lange dauert die Bewilligung?</h4>
+              <i class="ph ph-plus-circle"></i>
+            </div>
+            <div class="faq-answer">
+              <p>In der Regel 2-4 Wochen. Mit guter Vorbereitung und unserer Unterstützung kann es auch schneller gehen. Wir geben dir alle Unterlagen und Argumente an die Hand.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Was passiert, wenn mein Antrag abgelehnt wird?</h4>
+              <i class="ph ph-plus-circle"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Das kommt selten vor, wenn man gut vorbereitet ist. Sollte es passieren, besprechen wir gemeinsam die nächsten Schritte. Oft hilft ein Widerspruch oder ein neuer Anlauf mit besserer Begründung.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Kann ich während der Weiterbildung weiter ALG beziehen?</h4>
+              <i class="ph ph-plus-circle"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Ja! Du beziehst während der gesamten Weiterbildung weiterhin dein Arbeitslosengeld I oder II. Das ist ein großer Vorteil des Bildungsgutscheins.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Werden auch Fahrtkosten übernommen?</h4>
+              <i class="ph ph-plus-circle"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Ja, bei Präsenzkursen können Fahrtkosten und bei Bedarf auch Kinderbetreuungskosten übernommen werden. Das klärst du mit deinem Berater bei der Arbeitsagentur.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="beratung">
+      <div class="container">
+        <h2>Kostenlose Förderberatung</h2>
+        <p>Lass uns gemeinsam prüfen, ob du Anspruch auf einen Bildungsgutschein hast. Wir begleiten dich durch den gesamten Prozess.</p>
+        <a href="tel:+4922196881273" class="btn">
+          <i class="ph ph-phone"></i> 0221 - 96881273 anrufen
+        </a>
+        <p style="margin-top: 16px; font-size: 14px; opacity: 0.8;">
+          Oder schreib uns: <a href="mailto:ai-hub@startplatz.de" style="color: white;">ai-hub@startplatz.de</a>
+        </p>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI HUB">
+      <p>© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- FAQ Script -->
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+    });
+  </script>
+
+</body>
+</html>
+
