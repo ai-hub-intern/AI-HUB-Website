@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System | STARTPLATZ AI Hub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <style>
+    /* ==========================================
+       DESIGN TOKENS
+       ========================================== */
+    :root {
+      /* Colors */
+      --color-teal: #00B5B6;
+      --color-teal-dark: #005B63;
+      --color-teal-light: #22D3EE;
+      --color-primary: #9836FF;
+      --color-primary-light: #B366FF;
+      --color-primary-dark: #7B2BD9;
+      --color-orange: #F97316;
+      --color-orange-dark: #EA580C;
+      
+      --color-white: #FFFFFF;
+      --color-bg: #FAFBFC;
+      --color-bg-subtle: #F3F4F6;
+      --color-surface: #FFFFFF;
+      --color-border: rgba(0, 0, 0, 0.08);
+      --color-border-strong: rgba(0, 0, 0, 0.12);
+      
+      --color-text: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94A3B8;
+      --color-text-inverse: #FFFFFF;
+      
+      --color-success: #10B981;
+      --color-warning: #F59E0B;
+      --color-error: #EF4444;
+      --color-info: #3B82F6;
+      
+      /* Gradients */
+      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
+      --gradient-primary: linear-gradient(135deg, #9836FF 0%, #B366FF 100%);
+      --gradient-orange: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+      --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      
+      /* Typography */
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      
+      /* Radius */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --radius-2xl: 28px;
+      --radius-full: 9999px;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ==========================================
+       BASE STYLES
+       ========================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    
+    /* ==========================================
+       LAYOUT
+       ========================================== */
+    .ds-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    
+    /* Sidebar */
+    .ds-sidebar {
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-6);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    
+    .ds-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: var(--space-6);
+    }
+    
+    .ds-logo img {
+      height: 32px;
+    }
+    
+    .ds-logo span {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    .ds-nav-section {
+      margin-bottom: var(--space-6);
+    }
+    
+    .ds-nav-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-3);
+    }
+    
+    .ds-nav-links {
+      list-style: none;
+    }
+    
+    .ds-nav-links a {
+      display: block;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .ds-nav-links a:hover {
+      background: var(--color-bg-subtle);
+      color: var(--color-text);
+    }
+    
+    .ds-nav-links a.active {
+      background: rgba(0, 181, 182, 0.1);
+      color: var(--color-teal-dark);
+    }
+    
+    /* Main Content */
+    .ds-main {
+      padding: var(--space-12);
+      max-width: 1000px;
+    }
+    
+    .ds-section {
+      margin-bottom: var(--space-16);
+      scroll-margin-top: var(--space-8);
+    }
+    
+    .ds-section-header {
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .ds-section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+    
+    .ds-section-header p {
+      color: var(--color-text-secondary);
+    }
+    
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    
+    /* ==========================================
+       COLOR SWATCHES
+       ========================================== */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-4);
+    }
+    
+    .color-swatch {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-border);
+    }
+    
+    .color-preview {
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-3);
+    }
+    
+    .color-preview span {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+    }
+    
+    .color-info {
+      padding: var(--space-3);
+    }
+    
+    .color-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .color-info p {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+    }
+    
+    /* Gradient Swatches */
+    .gradient-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+    
+    .gradient-swatch {
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      color: white;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    
+    .gradient-swatch h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .gradient-swatch code {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      opacity: 0.8;
+      background: none;
+      padding: 0;
+      border: none;
+      color: inherit;
+    }
+    
+    /* ==========================================
+       TYPOGRAPHY SHOWCASE
+       ========================================== */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    
+    .type-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .type-label {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--color-text-tertiary);
+    }
+    
+    .type-h1 { font-size: 4.5rem; font-weight: 800; font-family: var(--font-display); line-height: 1.05; }
+    .type-h2 { font-size: 3.5rem; font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
+    .type-h3 { font-size: 2rem; font-weight: 600; font-family: var(--font-display); line-height: 1.2; }
+    .type-h4 { font-size: 1.5rem; font-weight: 600; font-family: var(--font-display); line-height: 1.3; }
+    .type-h5 { font-size: 1.25rem; font-weight: 600; font-family: var(--font-display); }
+    .type-body { font-size: 1rem; color: var(--color-text-secondary); }
+    .type-small { font-size: 0.875rem; color: var(--color-text-tertiary); }
+    
+    /* ==========================================
+       SPACING SHOWCASE
+       ========================================== */
+    .spacing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+    
+    .spacing-box {
+      background: var(--color-teal);
+      border-radius: 4px;
+    }
+    
+    .spacing-label {
+      font-size: 13px;
+    }
+    
+    .spacing-label code {
+      display: block;
+      font-size: 11px;
+      color: var(--color-text-tertiary);
+      margin-top: 2px;
+      background: none;
+      padding: 0;
+      border: none;
+    }
+    
+    /* ==========================================
+       RADIUS SHOWCASE
+       ========================================== */
+    .radius-grid {
+      display: flex;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+    
+    .radius-item {
+      text-align: center;
+    }
+    
+    .radius-preview {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-teal);
+      margin-bottom: var(--space-2);
+    }
+    
+    .radius-item span {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+    
+    .radius-item code {
+      display: block;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+    
+    /* ==========================================
+       SHADOW SHOWCASE
+       ========================================== */
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    
+    .shadow-item {
+      text-align: center;
+    }
+    
+    .shadow-preview {
+      width: 100%;
+      height: 80px;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-3);
+    }
+    
+    .shadow-item span {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    /* ==========================================
+       BUTTON SHOWCASE
+       ========================================== */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    
+    .btn {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--gradient-teal);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 91, 99, 0.2);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 91, 99, 0.3);
+    }
+    
+    .btn-accent {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(152, 54, 255, 0.2);
+    }
+    
+    .btn-accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(152, 54, 255, 0.3);
+    }
+    
+    .btn-secondary {
+      background: var(--color-surface);
+      color: var(--color-text);
+      border: 1px solid var(--color-border-strong);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-teal);
+      color: var(--color-teal-dark);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--color-text);
+      color: var(--color-text);
+    }
+    
+    .btn-outline:hover {
+      background: var(--color-text);
+      color: white;
+    }
+    
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+    
+    .btn-lg {
+      padding: 18px 36px;
+      font-size: 16px;
+    }
+    
+    /* ==========================================
+       CARD SHOWCASE
+       ========================================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .card-featured {
+      border: 2px solid var(--color-teal);
+      position: relative;
+    }
+    
+    .card-featured::before {
+      content: 'Featured';
+      position: absolute;
+      top: -10px;
+      left: var(--space-6);
+      background: var(--gradient-teal);
+      color: white;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    .card-glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .card-accent {
+      background: linear-gradient(135deg, rgba(0, 181, 182, 0.04) 0%, rgba(186, 246, 226, 0.06) 100%);
+      border: 1px solid rgba(0, 181, 182, 0.15);
+      padding-left: var(--space-8);
+      position: relative;
+    }
+    
+    .card-accent::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--gradient-teal);
+      border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+    }
+    
+    .card h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+    
+    .card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    /* ==========================================
+       BADGE SHOWCASE
+       ========================================== */
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .badge-teal {
+      background: rgba(0, 181, 182, 0.1);
+      color: var(--color-teal-dark);
+    }
+    
+    .badge-purple {
+      background: rgba(152, 54, 255, 0.1);
+      color: var(--color-primary-dark);
+    }
+    
+    .badge-success {
+      background: var(--color-success);
+      color: white;
+    }
+    
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #92400E;
+    }
+    
+    .badge-error {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--color-error);
+    }
+    
+    .badge-urgency {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      color: #92400E;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--color-bg-subtle);
+      color: var(--color-text-secondary);
+    }
+    
+    /* ==========================================
+       FORM SHOWCASE
+       ========================================== */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .form-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .input {
+      padding: 14px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      font-size: 15px;
+      font-family: var(--font-body);
+      transition: all 0.2s ease;
+    }
+    
+    .input:focus {
+      outline: none;
+      border-color: var(--color-teal);
+      box-shadow: 0 0 0 3px rgba(0, 181, 182, 0.1);
+    }
+    
+    .input-lg {
+      padding: 16px 24px;
+      border-radius: var(--radius-lg);
+    }
+    
+    .input-error {
+      border-color: var(--color-error);
+    }
+    
+    .input-error:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+    
+    .input-success {
+      border-color: var(--color-success);
+    }
+    
+    .form-helper {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+    }
+    
+    .form-error {
+      font-size: 12px;
+      color: var(--color-error);
+    }
+    
+    /* ==========================================
+       ICON SHOWCASE
+       ========================================== */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-4);
+    }
+    
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4);
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .icon-item:hover {
+      border-color: var(--color-teal);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .icon-item i {
+      font-size: 28px;
+      color: var(--color-teal);
+    }
+    
+    .icon-item span {
+      font-size: 11px;
+      color: var(--color-text-tertiary);
+      font-family: var(--font-mono);
+    }
+    
+    .icon-container {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      background: rgba(0, 181, 182, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--color-teal);
+    }
+    
+    .icon-container-sm {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+    
+    .icon-container-lg {
+      width: 80px;
+      height: 80px;
+      font-size: 36px;
+    }
+    
+    .icon-container-purple {
+      background: rgba(152, 54, 255, 0.1);
+      color: var(--color-primary);
+    }
+    
+    .icon-container-orange {
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--color-orange);
+    }
+    
+    /* ==========================================
+       CODE BLOCKS
+       ========================================== */
+    .code-block {
+      background: #1E293B;
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin: var(--space-4) 0;
+      overflow-x: auto;
+    }
+    
+    .code-block code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #E2E8F0;
+      background: none;
+      padding: 0;
+      border: none;
+      line-height: 1.6;
+    }
+    
+    .code-block .comment {
+      color: #64748B;
+    }
+    
+    .code-block .property {
+      color: #7DD3FC;
+    }
+    
+    .code-block .value {
+      color: #86EFAC;
+    }
+    
+    /* ==========================================
+       COMPONENT PREVIEW
+       ========================================== */
+    .component-preview {
+      background: var(--color-bg-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-4);
+    }
+    
+    .component-preview-dark {
+      background: var(--gradient-dark);
+    }
+    
+    /* ==========================================
+       ANIMATION SHOWCASE
+       ========================================== */
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    
+    .animation-item {
+      text-align: center;
+    }
+    
+    .animation-preview {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-teal);
+      border-radius: var(--radius-lg);
+      margin: 0 auto var(--space-3);
+    }
+    
+    .animation-item span {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .animation-item code {
+      display: block;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+    
+    .anim-fade-up {
+      animation: fadeInUp 1s ease both infinite;
+    }
+    
+    .anim-scale-in {
+      animation: scaleIn 1s ease both infinite;
+    }
+    
+    .anim-float {
+      animation: float 2s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+      0%, 100% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes scaleIn {
+      0%, 100% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 1024px) {
+      .ds-layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .ds-sidebar {
+        position: fixed;
+        left: -300px;
+        width: 280px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+      
+      .ds-sidebar.open {
+        left: 0;
+      }
+      
+      .ds-main {
+        padding: var(--space-6);
+      }
+      
+      .color-grid,
+      .card-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gradient-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .shadow-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .animation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Mobile Menu Toggle */
+    .mobile-toggle {
+      display: none;
+      position: fixed;
+      top: var(--space-4);
+      left: var(--space-4);
+      z-index: 1001;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      cursor: pointer;
+    }
+    
+    @media (max-width: 1024px) {
+      .mobile-toggle {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Toggle -->
+  <button class="mobile-toggle" onclick="toggleSidebar()">
+    <i class="ph ph-list"></i>
+    <span>Menu</span>
+  </button>
+
+  <div class="ds-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="ds-sidebar" id="sidebar">
+      <div class="ds-logo">
+        <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png" alt="STARTPLATZ AI Hub">
+        <span>Design System</span>
+      </div>
+      
+      <nav>
+        <div class="ds-nav-section">
+          <div class="ds-nav-title">Foundations</div>
+          <ul class="ds-nav-links">
+            <li><a href="#colors" class="active">Farben</a></li>
+            <li><a href="#gradients">Gradienten</a></li>
+            <li><a href="#typography">Typografie</a></li>
+            <li><a href="#spacing">Spacing</a></li>
+            <li><a href="#radius">Border Radius</a></li>
+            <li><a href="#shadows">Schatten</a></li>
+            <li><a href="#animations">Animationen</a></li>
+          </ul>
+        </div>
+        
+        <div class="ds-nav-section">
+          <div class="ds-nav-title">Components</div>
+          <ul class="ds-nav-links">
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#cards">Cards</a></li>
+            <li><a href="#badges">Badges & Tags</a></li>
+            <li><a href="#forms">Formulare</a></li>
+            <li><a href="#icons">Icons</a></li>
+          </ul>
+        </div>
+        
+        <div class="ds-nav-section">
+          <div class="ds-nav-title">Resources</div>
+          <ul class="ds-nav-links">
+            <li><a href="#usage">Code Usage</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="ds-main">
+      
+      <!-- Header -->
+      <header style="margin-bottom: var(--space-12);">
+        <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; margin-bottom: var(--space-4);">
+          STARTPLATZ AI Hub
+          <span style="background: var(--gradient-teal); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Design System</span>
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--color-text-secondary); max-width: 600px;">
+          Die zentrale Referenz für Designer und Entwickler. Konsistente, wiederverwendbare Bausteine für alle digitalen Produkte.
+        </p>
+      </header>
+      
+      <!-- Colors -->
+      <section id="colors" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Farben</h2>
+          <p>Unsere Farbpalette besteht aus Primary, Neutral und Semantic Colors.</p>
+        </div>
+        
+        <h3>Primary Brand Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #00B5B6;">
+              <span>#00B5B6</span>
+            </div>
+            <div class="color-info">
+              <h4>Teal</h4>
+              <p>--color-teal</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #005B63;">
+              <span>#005B63</span>
+            </div>
+            <div class="color-info">
+              <h4>Teal Dark</h4>
+              <p>--color-teal-dark</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #9836FF;">
+              <span>#9836FF</span>
+            </div>
+            <div class="color-info">
+              <h4>Purple</h4>
+              <p>--color-primary</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #F97316;">
+              <span>#F97316</span>
+            </div>
+            <div class="color-info">
+              <h4>Orange</h4>
+              <p>--color-orange</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Text Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #0F172A;">
+              <span style="color: white; background: rgba(0,0,0,0.5);">#0F172A</span>
+            </div>
+            <div class="color-info">
+              <h4>Text Primary</h4>
+              <p>--color-text</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #475569;">
+              <span style="color: white; background: rgba(0,0,0,0.5);">#475569</span>
+            </div>
+            <div class="color-info">
+              <h4>Text Secondary</h4>
+              <p>--color-text-secondary</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #94A3B8;">
+              <span>#94A3B8</span>
+            </div>
+            <div class="color-info">
+              <h4>Text Tertiary</h4>
+              <p>--color-text-tertiary</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Semantic Colors</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #10B981;">
+              <span>#10B981</span>
+            </div>
+            <div class="color-info">
+              <h4>Success</h4>
+              <p>--color-success</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #F59E0B;">
+              <span>#F59E0B</span>
+            </div>
+            <div class="color-info">
+              <h4>Warning</h4>
+              <p>--color-warning</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #EF4444;">
+              <span>#EF4444</span>
+            </div>
+            <div class="color-info">
+              <h4>Error</h4>
+              <p>--color-error</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #3B82F6;">
+              <span>#3B82F6</span>
+            </div>
+            <div class="color-info">
+              <h4>Info</h4>
+              <p>--color-info</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Gradients -->
+      <section id="gradients" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Gradienten</h2>
+          <p>Unsere Brand-Gradienten für CTAs, Heros und Feature-Bereiche.</p>
+        </div>
+        
+        <div class="gradient-grid">
+          <div class="gradient-swatch" style="background: var(--gradient-teal);">
+            <h4>Teal Gradient</h4>
+            <code>--gradient-teal</code>
+          </div>
+          <div class="gradient-swatch" style="background: var(--gradient-primary);">
+            <h4>Purple Gradient</h4>
+            <code>--gradient-primary</code>
+          </div>
+          <div class="gradient-swatch" style="background: var(--gradient-orange);">
+            <h4>Orange Gradient</h4>
+            <code>--gradient-orange</code>
+          </div>
+          <div class="gradient-swatch" style="background: var(--gradient-dark);">
+            <h4>Dark Gradient</h4>
+            <code>--gradient-dark</code>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Typography -->
+      <section id="typography" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Typografie</h2>
+          <p>Outfit für Headlines, Inter für Body Text, JetBrains Mono für Code.</p>
+        </div>
+        
+        <div class="type-scale">
+          <div class="type-row">
+            <span class="type-label">H1 / 72px</span>
+            <span class="type-h1">KI-Manager</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H2 / 56px</span>
+            <span class="type-h2">Weiterbildung</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H3 / 32px</span>
+            <span class="type-h3">Deine Vorteile</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H4 / 24px</span>
+            <span class="type-h4">12 Wochen Vollzeit</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">H5 / 20px</span>
+            <span class="type-h5">AZAV-zertifiziert</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Body / 16px</span>
+            <span class="type-body">Lerne KI-Projekte zu leiten, Strategien zu entwickeln und Teams in die KI-Transformation zu führen.</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">Small / 14px</span>
+            <span class="type-small">© 2025 STARTPLATZ AI Hub. Alle Rechte vorbehalten.</span>
+          </div>
+        </div>
+        
+        <h3>Font Families</h3>
+        <div class="code-block">
+          <code>
+<span class="comment">/* Headlines & Buttons */</span>
+<span class="property">--font-display</span>: <span class="value">'Outfit', sans-serif</span>;
+
+<span class="comment">/* Body Text */</span>
+<span class="property">--font-body</span>: <span class="value">'Inter', sans-serif</span>;
+
+<span class="comment">/* Code */</span>
+<span class="property">--font-mono</span>: <span class="value">'JetBrains Mono', monospace</span>;
+          </code>
+        </div>
+      </section>
+      
+      <!-- Spacing -->
+      <section id="spacing" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Spacing</h2>
+          <p>Konsistente Abstände basierend auf 4px Grid.</p>
+        </div>
+        
+        <div class="spacing-grid">
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 4px; height: 32px;"></div>
+            <span class="spacing-label">4px <code>--space-1</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 8px; height: 32px;"></div>
+            <span class="spacing-label">8px <code>--space-2</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 12px; height: 32px;"></div>
+            <span class="spacing-label">12px <code>--space-3</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 16px; height: 32px;"></div>
+            <span class="spacing-label">16px <code>--space-4</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 24px; height: 32px;"></div>
+            <span class="spacing-label">24px <code>--space-6</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 32px; height: 32px;"></div>
+            <span class="spacing-label">32px <code>--space-8</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 48px; height: 32px;"></div>
+            <span class="spacing-label">48px <code>--space-12</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 64px; height: 32px;"></div>
+            <span class="spacing-label">64px <code>--space-16</code></span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-box" style="width: 80px; height: 32px;"></div>
+            <span class="spacing-label">80px <code>--space-20</code></span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Border Radius -->
+      <section id="radius" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Border Radius</h2>
+          <p>Abgerundete Ecken für verschiedene Anwendungen.</p>
+        </div>
+        
+        <div class="radius-grid">
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 6px;"></div>
+            <span>Small</span>
+            <code>6px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 10px;"></div>
+            <span>Medium</span>
+            <code>10px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 14px;"></div>
+            <span>Large</span>
+            <code>14px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 20px;"></div>
+            <span>XL</span>
+            <code>20px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 28px;"></div>
+            <span>2XL</span>
+            <code>28px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-preview" style="border-radius: 50%;"></div>
+            <span>Full</span>
+            <code>9999px</code>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Shadows -->
+      <section id="shadows" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Schatten</h2>
+          <p>Tiefenebenen für visuelle Hierarchie.</p>
+        </div>
+        
+        <div class="shadow-grid">
+          <div class="shadow-item">
+            <div class="shadow-preview" style="box-shadow: var(--shadow-sm);"></div>
+            <span>Small</span>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-preview" style="box-shadow: var(--shadow-md);"></div>
+            <span>Medium</span>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-preview" style="box-shadow: var(--shadow-lg);"></div>
+            <span>Large</span>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-preview" style="box-shadow: var(--shadow-xl);"></div>
+            <span>XL</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Animations -->
+      <section id="animations" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Animationen</h2>
+          <p>Subtile Bewegungen für lebendige Interfaces.</p>
+        </div>
+        
+        <div class="animation-grid">
+          <div class="animation-item">
+            <div class="animation-preview anim-fade-up"></div>
+            <span>Fade Up</span>
+            <code>fadeInUp</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview anim-scale-in"></div>
+            <span>Scale In</span>
+            <code>scaleIn</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview anim-float"></div>
+            <span>Float</span>
+            <code>float</code>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Buttons -->
+      <section id="buttons" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Buttons</h2>
+          <p>Pill-shaped Buttons mit verschiedenen Varianten.</p>
+        </div>
+        
+        <h3>Varianten</h3>
+        <div class="button-grid">
+          <button class="btn btn-primary"><i class="ph ph-calendar"></i> Primary</button>
+          <button class="btn btn-accent"><i class="ph ph-robot"></i> Accent</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-outline">Outline</button>
+        </div>
+        
+        <h3>Größen</h3>
+        <div class="button-grid">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+        
+        <h3>Auf dunklem Hintergrund</h3>
+        <div class="component-preview component-preview-dark">
+          <div class="button-grid">
+            <button class="btn" style="background: white; color: var(--color-teal-dark);">White</button>
+            <button class="btn" style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);">Ghost</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Cards -->
+      <section id="cards" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Cards</h2>
+          <p>Container für gruppierte Inhalte.</p>
+        </div>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h4>Standard Card</h4>
+            <p>Die Standard-Card mit Hover-Effekt für allgemeine Inhalte.</p>
+          </div>
+          <div class="card card-featured">
+            <h4>Featured Card</h4>
+            <p>Hervorgehobene Card mit Teal Border und Badge.</p>
+          </div>
+          <div class="card card-accent">
+            <h4>Accent Card</h4>
+            <p>Card mit linkem Farbbalken für wichtige Hinweise.</p>
+          </div>
+          <div class="card card-glass">
+            <h4>Glass Card</h4>
+            <p>Glassmorphism-Effekt für moderne Overlays.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Badges & Tags -->
+      <section id="badges" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Badges & Tags</h2>
+          <p>Kleine Labels für Status und Kategorien.</p>
+        </div>
+        
+        <h3>Badges</h3>
+        <div class="badge-grid" style="margin-bottom: var(--space-6);">
+          <span class="badge badge-teal"><i class="ph ph-check"></i> Förderfähig</span>
+          <span class="badge badge-purple"><i class="ph ph-robot"></i> AI-Automation</span>
+          <span class="badge badge-success">Verfügbar</span>
+          <span class="badge badge-warning"><i class="ph ph-warning"></i> Limitiert</span>
+          <span class="badge badge-error">Ausgebucht</span>
+          <span class="badge badge-urgency"><i class="ph ph-lightning"></i> Nur noch 5 Plätze</span>
+        </div>
+        
+        <h3>Tags</h3>
+        <div class="badge-grid">
+          <span class="tag">Köln</span>
+          <span class="tag">Online</span>
+          <span class="tag">Vollzeit</span>
+          <span class="tag">12 Wochen</span>
+        </div>
+      </section>
+      
+      <!-- Forms -->
+      <section id="forms" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Formulare</h2>
+          <p>Input-Felder und Form-Elemente.</p>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Standard Input</label>
+            <input type="text" class="input" placeholder="Dein Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mit Hilfetext</label>
+            <input type="email" class="input" placeholder="name@email.de">
+            <span class="form-helper">Wir senden dir keine Werbung.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Error State</label>
+            <input type="text" class="input input-error" value="Ungültige Eingabe">
+            <span class="form-error">Bitte gib eine gültige E-Mail ein.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Success State</label>
+            <input type="text" class="input input-success" value="Korrekte Eingabe">
+          </div>
+        </div>
+      </section>
+      
+      <!-- Icons -->
+      <section id="icons" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Icons</h2>
+          <p>Wir verwenden Phosphor Icons. <a href="https://phosphoricons.com/" target="_blank" style="color: var(--color-teal);">→ Alle Icons</a></p>
+        </div>
+        
+        <h3>Häufig verwendet</h3>
+        <div class="icon-grid">
+          <div class="icon-item">
+            <i class="ph ph-brain"></i>
+            <span>ph-brain</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-robot"></i>
+            <span>ph-robot</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-rocket-launch"></i>
+            <span>ph-rocket-launch</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-calendar"></i>
+            <span>ph-calendar</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-phone"></i>
+            <span>ph-phone</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-envelope"></i>
+            <span>ph-envelope</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-check-circle"></i>
+            <span>ph-check-circle</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-arrow-right"></i>
+            <span>ph-arrow-right</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-certificate"></i>
+            <span>ph-certificate</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-map-pin"></i>
+            <span>ph-map-pin</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-clock"></i>
+            <span>ph-clock</span>
+          </div>
+          <div class="icon-item">
+            <i class="ph ph-users-three"></i>
+            <span>ph-users-three</span>
+          </div>
+        </div>
+        
+        <h3>Icon Container</h3>
+        <div style="display: flex; gap: var(--space-6); align-items: flex-end; margin-top: var(--space-6);">
+          <div style="text-align: center;">
+            <div class="icon-container icon-container-sm"><i class="ph ph-brain"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">Small</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container"><i class="ph ph-brain"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">Default</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container icon-container-lg"><i class="ph ph-brain"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">Large</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container icon-container-purple"><i class="ph ph-robot"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">Purple</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container icon-container-orange"><i class="ph ph-rocket-launch"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">Orange</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Usage -->
+      <section id="usage" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Code Usage</h2>
+          <p>So verwendest du das Design System in deinen Projekten.</p>
+        </div>
+        
+        <h3>CSS importieren</h3>
+        <div class="code-block">
+          <code>
+<span class="comment">&lt;!-- Im &lt;head&gt; deiner HTML-Datei --&gt;</span>
+&lt;link rel="stylesheet" href="<span class="value">/css/design-system.css</span>"&gt;
+          </code>
+        </div>
+        
+        <h3>Fonts einbinden</h3>
+        <div class="code-block">
+          <code>
+<span class="comment">&lt;!-- Google Fonts --&gt;</span>
+&lt;link rel="preconnect" href="<span class="value">https://fonts.googleapis.com</span>"&gt;
+&lt;link href="<span class="value">https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap</span>" rel="stylesheet"&gt;
+
+<span class="comment">&lt;!-- Phosphor Icons --&gt;</span>
+&lt;script src="<span class="value">https://unpkg.com/@phosphor-icons/web@2.0.3</span>"&gt;&lt;/script&gt;
+          </code>
+        </div>
+        
+        <h3>Button verwenden</h3>
+        <div class="code-block">
+          <code>
+&lt;a href="<span class="value">#</span>" class="<span class="property">btn btn-primary</span>"&gt;
+  &lt;i class="<span class="property">ph ph-calendar</span>"&gt;&lt;/i&gt; Termin buchen
+&lt;/a&gt;
+          </code>
+        </div>
+        
+        <h3>CSS Variables nutzen</h3>
+        <div class="code-block">
+          <code>
+<span class="property">.my-component</span> {
+  <span class="property">background</span>: <span class="value">var(--color-surface)</span>;
+  <span class="property">border-radius</span>: <span class="value">var(--radius-xl)</span>;
+  <span class="property">padding</span>: <span class="value">var(--space-6)</span>;
+  <span class="property">box-shadow</span>: <span class="value">var(--shadow-lg)</span>;
+  <span class="property">transition</span>: <span class="value">all var(--duration-normal) var(--ease-out)</span>;
+}
+          </code>
+        </div>
+      </section>
+      
+      <!-- Footer -->
+      <footer style="margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--color-border); text-align: center;">
+        <p style="color: var(--color-text-tertiary); font-size: 14px;">
+          STARTPLATZ AI Hub Design System v1.0 | Dezember 2024
+        </p>
+      </footer>
+      
+    </main>
+  </div>
+
+  <script>
+    // Mobile sidebar toggle
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+    
+    // Smooth scroll for nav links
+    document.querySelectorAll('.ds-nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Update active state
+        document.querySelectorAll('.ds-nav-links a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Close mobile sidebar
+        if (window.innerWidth < 1024) {
+          document.getElementById('sidebar').classList.remove('open');
+        }
+      });
+    });
+    
+    // Copy to clipboard on icon click
+    document.querySelectorAll('.icon-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const iconClass = this.querySelector('span').textContent;
+        navigator.clipboard.writeText(`<i class="ph ${iconClass}"></i>`);
+        
+        // Visual feedback
+        const original = this.style.background;
+        this.style.background = 'rgba(0, 181, 182, 0.1)';
+        setTimeout(() => this.style.background = original, 200);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
