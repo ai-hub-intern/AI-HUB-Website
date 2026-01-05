@@ -875,7 +875,7 @@
       overflow: hidden;
     }
 
-    /* Video Background */
+    /* Video Background - Multi-Position Video System */
     .hero-background video {
       position: absolute;
       inset: 0;
@@ -883,6 +883,38 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Position 1: Hero Section (FPV Zoom) - top layer */
+    #video_position1 {
+      z-index: 3;
+      opacity: 1;
+    }
+
+    /* Position 2: Content Sections (keyvisual) - middle layer */
+    #video_position2 {
+      z-index: 2;
+      opacity: 1;
+    }
+
+    /* Position 3: Wissen & Tools onwards (Abstract liquid) - base layer */
+    #video_position3 {
+      z-index: 1;
+      opacity: 1;
+    }
+
+    /* Position 2 active: fade out position 1 */
+    .hero-background.video-position-2 #video_position1 {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Position 3 active: fade out position 1 and 2 */
+    .hero-background.video-position-3 #video_position1,
+    .hero-background.video-position-3 #video_position2 {
+      opacity: 0;
+      pointer-events: none;
     }
 
     /* Plasma Grid Canvas */
@@ -2538,31 +2570,104 @@
       document.body.insertBefore(skipLink, document.body.firstChild);
 
       // ==========================================
-      // Hero Video Autoplay
+      // Video Background System - Multi-Position Scroll Switching
+      // Position 1: Hero | Position 2: Content | Position 3: Wissen onwards
       // ==========================================
-      const heroVideo = document.getElementById('heroVideo');
-      if (heroVideo) {
+      (function initVideoPositions() {
+        const heroBackground = document.querySelector('.hero-background');
+        const video1 = document.getElementById('video_position1');
+        const video2 = document.getElementById('video_position2');
+        const video3 = document.getElementById('video_position3');
+        const contentOverlay = document.querySelector('.content-overlay');
+        const wissenSection = document.getElementById('wissen');
+        
+        if (!video1 || !video2 || !video3 || !heroBackground) return;
+        
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let currentPosition = 1; // Track which video position is active
 
-        function enableVideoLoop() {
+        // Setup video for playback
+        function setupVideo(video) {
           try {
-            heroVideo.muted = true;
-            heroVideo.loop = true;
-            heroVideo.playsInline = true;
-            if (!reduceMotion) heroVideo.play().catch(() => { });
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            if (!reduceMotion) video.play().catch(() => { });
           } catch (e) { }
         }
 
-        if (heroVideo.readyState >= 2) {
-          enableVideoLoop();
-        } else {
-          heroVideo.addEventListener('loadeddata', enableVideoLoop, { once: true });
+        // Initialize all videos
+        [video1, video2, video3].forEach(video => {
+          if (video.readyState >= 2) {
+            setupVideo(video);
+          } else {
+            video.addEventListener('loadeddata', () => setupVideo(video), { once: true });
+          }
+        });
+
+        // Handle reduced motion preference
+        if (reduceMotion) {
+          [video1, video2, video3].forEach(video => {
+            try { video.pause(); video.currentTime = 0; } catch (e) { }
+          });
+          return; // Skip scroll handling for reduced motion
         }
 
-        if (reduceMotion) {
-          try { heroVideo.pause(); heroVideo.currentTime = 0; } catch (e) { }
+        // Multi-position scroll-based video switching
+        function updateVideoPosition() {
+          const viewportHeight = window.innerHeight;
+          
+          // Check Wissen section position (triggers Position 3)
+          if (wissenSection) {
+            const wissenRect = wissenSection.getBoundingClientRect();
+            // When Wissen section top reaches 80% of viewport
+            if (wissenRect.top <= viewportHeight * 0.8) {
+              if (currentPosition !== 3) {
+                heroBackground.classList.remove('video-position-2');
+                heroBackground.classList.add('video-position-3');
+                currentPosition = 3;
+              }
+              return;
+            }
+          }
+          
+          // Check content overlay position (triggers Position 2)
+          if (contentOverlay) {
+            const contentRect = contentOverlay.getBoundingClientRect();
+            // When content overlay top reaches 70% of viewport
+            if (contentRect.top <= viewportHeight * 0.7) {
+              if (currentPosition !== 2) {
+                heroBackground.classList.remove('video-position-3');
+                heroBackground.classList.add('video-position-2');
+                currentPosition = 2;
+              }
+              return;
+            }
+          }
+          
+          // Default: Position 1 (Hero section)
+          if (currentPosition !== 1) {
+            heroBackground.classList.remove('video-position-2', 'video-position-3');
+            currentPosition = 1;
+          }
         }
-      }
+
+        // Throttled scroll listener for performance
+        let scrollTicking = false;
+        
+        window.addEventListener('scroll', () => {
+          if (!scrollTicking) {
+            requestAnimationFrame(() => {
+              updateVideoPosition();
+              scrollTicking = false;
+            });
+            scrollTicking = true;
+          }
+        }, { passive: true });
+
+        // Initial check (in case page loads scrolled)
+        updateVideoPosition();
+      })();
 
       // ==========================================
       // Plasma Grid Effect - Light Theme with 3D Edge Depth
@@ -2891,7 +2996,7 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-container">
       <a href="/" class="logo-link" aria-label="STARTPLATZ AI HUB">
-        <img src="https://res.cloudinary.com/startplatz/image/upload/v1709845467/ai-hub/AI-Hub-Logo.png"
+        <img src="https://res.cloudinary.com/startplatz/image/upload/v1766548135/ai-hub/website/ChatGPT_Image_Dec_23_2025_09_29_23_PM.png"
           alt="STARTPLATZ AI HUB" class="logo-img" />
       </a>
 
@@ -3094,7 +3199,20 @@
 
   <!-- Fixed Background - Video + Plasma Grid -->
   <div class="hero-background" aria-hidden="true">
-    <video id="heroVideo" preload="metadata" autoplay loop muted playsinline disablepictureinpicture tabindex="-1">
+    <!-- Position 1: Hero Section (FPV Zoom) -->
+    <video id="video_position1" preload="auto" autoplay loop muted playsinline disablepictureinpicture tabindex="-1">
+      <source
+        src="https://res.cloudinary.com/startplatz/video/upload/v1754940741/ai-hub/website/Zoom_in_fpv_202508112128_lwkm0.mp4"
+        type="video/mp4" />
+    </video>
+    <!-- Position 2: Content Sections (keyvisual) -->
+    <video id="video_position2" preload="metadata" autoplay loop muted playsinline disablepictureinpicture tabindex="-1">
+      <source
+        src="https://res.cloudinary.com/startplatz/video/upload/v1766546931/ai-hub/website/keyvisualver1.mp4"
+        type="video/mp4" />
+    </video>
+    <!-- Position 3: Wissen & Tools onwards (Abstract liquid mesh) -->
+    <video id="video_position3" preload="metadata" autoplay loop muted playsinline disablepictureinpicture tabindex="-1">
       <source
         src="https://res.cloudinary.com/startplatz/video/upload/v1754951354/ai-hub/website/Abstract_liquid_mesh_202508120028_rrw2h.mp4"
         type="video/mp4" />

@@ -3,54 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design System | STARTPLATZ AI Hub</title>
+  <meta name="description" content="STARTPLATZ AI Hub Design System - Vollständige Dokumentation für Designer und Entwickler mit Farben, Typografie, Komponenten und Animationen." />
+  <meta name="theme-color" content="#8F4DD8" />
+  <meta name="robots" content="noindex, nofollow" />
   
+  <title>Design System v2.1 | STARTPLATZ AI Hub</title>
+  
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%238F4DD8' width='100' height='100' rx='16'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='system-ui'%3EDS%3C/text%3E%3C/svg%3E">
   
   <style>
     /* ==========================================
-       DESIGN TOKENS
+       DESIGN TOKENS - The Geometric Flow
        ========================================== */
     :root {
-      /* Colors */
-      --color-teal: #00B5B6;
-      --color-teal-dark: #005B63;
-      --color-teal-light: #22D3EE;
-      --color-primary: #9836FF;
-      --color-primary-light: #B366FF;
-      --color-primary-dark: #7B2BD9;
-      --color-orange: #F97316;
-      --color-orange-dark: #EA580C;
+      /* PILLAR COLORS */
+      --hub-500: #8F4DD8;
+      --hub-600: #7B3DC0;
+      --hub-700: #5A2A8F;
+      --hub-800: #38196B;
+      --hub-highlight: #A86CF0;
+      
+      --academy-500: #03B0B4;
+      --academy-600: #029599;
+      --academy-700: #017A7D;
+      --academy-800: #005D5F;
+      --academy-highlight: #43D7D5;
+      
+      --business-500: #07418F;
+      --business-600: #053576;
+      --business-700: #03265A;
+      --business-800: #011451;
+      --business-highlight: #2E67C7;
+      
+      /* ACCENT COLORS */
+      --accent-orange: #FC9929;
+      --accent-coral: #E95167;
+      --accent-magenta: #E72D90;
+      
+      /* NEUTRALS */
+      --sp-offwhite: #F7F6F7;
+      --sp-warm-offwhite: #F3E6E0;
+      --sp-grey-100: #EDECEE;
+      --sp-grey-200: #E4E3E5;
+      --sp-grey-300: #D4D3D8;
+      --sp-grey-400: #A8A7AC;
+      --sp-wordmark: #6E6E70;
+      --sp-text: #1A1A1A;
+      --sp-black: #0B0B0D;
+      
+      /* Legacy aliases */
+      --color-teal: var(--academy-500);
+      --color-teal-dark: var(--academy-800);
+      --color-teal-light: var(--academy-highlight);
+      --color-primary: var(--hub-500);
+      --color-primary-light: var(--hub-highlight);
+      --color-primary-dark: var(--hub-800);
+      --color-orange: var(--accent-orange);
       
       --color-white: #FFFFFF;
-      --color-bg: #FAFBFC;
-      --color-bg-subtle: #F3F4F6;
+      --color-bg: var(--sp-offwhite);
+      --color-bg-subtle: var(--sp-grey-100);
       --color-surface: #FFFFFF;
       --color-border: rgba(0, 0, 0, 0.08);
       --color-border-strong: rgba(0, 0, 0, 0.12);
       
-      --color-text: #0F172A;
-      --color-text-secondary: #475569;
-      --color-text-tertiary: #94A3B8;
+      --color-text: var(--sp-text);
+      --color-text-secondary: var(--sp-wordmark);
+      --color-text-tertiary: var(--sp-grey-400);
       --color-text-inverse: #FFFFFF;
       
       --color-success: #10B981;
-      --color-warning: #F59E0B;
-      --color-error: #EF4444;
-      --color-info: #3B82F6;
+      --color-warning: var(--accent-orange);
+      --color-error: var(--accent-coral);
+      --color-info: var(--business-500);
       
-      /* Gradients */
-      --gradient-teal: linear-gradient(135deg, #005B63 0%, #00B5B6 100%);
-      --gradient-primary: linear-gradient(135deg, #9836FF 0%, #B366FF 100%);
-      --gradient-orange: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
-      --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      /* GRADIENTS - Structural (3D shading) */
+      --gradient-hub: linear-gradient(135deg, var(--hub-500) 0%, var(--hub-600) 100%);
+      --gradient-academy: linear-gradient(135deg, var(--academy-500) 0%, var(--academy-600) 100%);
+      --gradient-business: linear-gradient(135deg, var(--business-500) 0%, var(--business-600) 100%);
+      --gradient-dark: linear-gradient(135deg, var(--sp-black) 0%, #1E1E20 100%);
+      
+      /* Legacy */
+      --gradient-teal: var(--gradient-academy);
+      --gradient-primary: var(--gradient-hub);
+      --gradient-orange: linear-gradient(135deg, #E8860F 0%, var(--accent-orange) 100%);
       
       /* Typography */
-      --font-display: 'Outfit', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       
       /* Spacing */
@@ -96,8 +148,8 @@
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.6;
-      color: var(--color-text);
-      background: var(--color-bg);
+      color: var(--sp-text);
+      background: var(--sp-offwhite);
     }
     
     /* ==========================================
@@ -174,8 +226,8 @@
     }
     
     .ds-nav-links a.active {
-      background: rgba(0, 181, 182, 0.1);
-      color: var(--color-teal-dark);
+      background: rgba(143, 77, 216, 0.1);
+      color: var(--hub-700);
     }
     
     /* Main Content */
@@ -320,12 +372,11 @@
       color: var(--color-text-tertiary);
     }
     
-    .type-h1 { font-size: 4.5rem; font-weight: 800; font-family: var(--font-display); line-height: 1.05; }
-    .type-h2 { font-size: 3.5rem; font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
-    .type-h3 { font-size: 2rem; font-weight: 600; font-family: var(--font-display); line-height: 1.2; }
+    .type-h1 { font-size: 3.5rem; font-weight: 700; font-family: var(--font-display); line-height: 1.05; letter-spacing: -0.02em; }
+    .type-h2 { font-size: 2.5rem; font-weight: 700; font-family: var(--font-display); line-height: 1.15; letter-spacing: -0.01em; }
+    .type-h3 { font-size: 1.75rem; font-weight: 600; font-family: var(--font-display); line-height: 1.25; }
     .type-h4 { font-size: 1.5rem; font-weight: 600; font-family: var(--font-display); line-height: 1.3; }
-    .type-h5 { font-size: 1.25rem; font-weight: 600; font-family: var(--font-display); }
-    .type-body { font-size: 1rem; color: var(--color-text-secondary); }
+    .type-body { font-size: 1.125rem; color: var(--color-text-secondary); line-height: 1.6; }
     .type-small { font-size: 0.875rem; color: var(--color-text-tertiary); }
     
     /* ==========================================
@@ -348,7 +399,7 @@
     }
     
     .spacing-box {
-      background: var(--color-teal);
+      background: var(--academy-500);
       border-radius: 4px;
     }
     
@@ -382,7 +433,7 @@
     .radius-preview {
       width: 80px;
       height: 80px;
-      background: var(--gradient-teal);
+      background: var(--gradient-academy);
       margin-bottom: var(--space-2);
     }
     
@@ -449,25 +500,25 @@
     }
     
     .btn-primary {
-      background: var(--gradient-teal);
+      background: var(--gradient-academy);
       color: white;
-      box-shadow: 0 4px 12px rgba(0, 91, 99, 0.2);
+      box-shadow: 0 4px 12px rgba(3, 176, 180, 0.2);
     }
     
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 91, 99, 0.3);
+      box-shadow: 0 8px 20px rgba(3, 176, 180, 0.3);
     }
     
     .btn-accent {
-      background: var(--gradient-primary);
+      background: var(--gradient-hub);
       color: white;
-      box-shadow: 0 4px 12px rgba(152, 54, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(143, 77, 216, 0.2);
     }
     
     .btn-accent:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(152, 54, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(143, 77, 216, 0.3);
     }
     
     .btn-secondary {
@@ -479,8 +530,8 @@
     
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: var(--color-teal);
-      color: var(--color-teal-dark);
+      border-color: var(--academy-500);
+      color: var(--academy-700);
     }
     
     .btn-outline {
@@ -528,7 +579,7 @@
     }
     
     .card-featured {
-      border: 2px solid var(--color-teal);
+      border: 2px solid var(--hub-500);
       position: relative;
     }
     
@@ -537,7 +588,7 @@
       position: absolute;
       top: -10px;
       left: var(--space-6);
-      background: var(--gradient-teal);
+      background: var(--gradient-hub);
       color: white;
       padding: 4px 12px;
       border-radius: var(--radius-full);
@@ -552,8 +603,8 @@
     }
     
     .card-accent {
-      background: linear-gradient(135deg, rgba(0, 181, 182, 0.04) 0%, rgba(186, 246, 226, 0.06) 100%);
-      border: 1px solid rgba(0, 181, 182, 0.15);
+      background: var(--sp-offwhite);
+      border: 1px solid var(--color-border);
       padding-left: var(--space-8);
       position: relative;
     }
@@ -565,7 +616,7 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: var(--gradient-teal);
+      background: var(--gradient-academy);
       border-radius: var(--radius-xl) 0 0 var(--radius-xl);
     }
     
@@ -601,13 +652,13 @@
     }
     
     .badge-teal {
-      background: rgba(0, 181, 182, 0.1);
-      color: var(--color-teal-dark);
+      background: rgba(3, 176, 180, 0.12);
+      color: var(--academy-700);
     }
     
     .badge-purple {
-      background: rgba(152, 54, 255, 0.1);
-      color: var(--color-primary-dark);
+      background: rgba(143, 77, 216, 0.12);
+      color: var(--hub-700);
     }
     
     .badge-success {
@@ -677,8 +728,8 @@
     
     .input:focus {
       outline: none;
-      border-color: var(--color-teal);
-      box-shadow: 0 0 0 3px rgba(0, 181, 182, 0.1);
+      border-color: var(--academy-500);
+      box-shadow: 0 0 0 3px rgba(3, 176, 180, 0.1);
     }
     
     .input-lg {
@@ -731,13 +782,13 @@
     }
     
     .icon-item:hover {
-      border-color: var(--color-teal);
+      border-color: var(--hub-500);
       box-shadow: var(--shadow-md);
     }
     
     .icon-item i {
       font-size: 28px;
-      color: var(--color-teal);
+      color: var(--hub-500);
     }
     
     .icon-item span {
@@ -750,12 +801,12 @@
       width: 64px;
       height: 64px;
       border-radius: var(--radius-lg);
-      background: rgba(0, 181, 182, 0.1);
+      background: var(--sp-grey-100);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      color: var(--color-teal);
+      color: var(--sp-text);
     }
     
     .icon-container-sm {
@@ -770,14 +821,19 @@
       font-size: 36px;
     }
     
-    .icon-container-purple {
-      background: rgba(152, 54, 255, 0.1);
-      color: var(--color-primary);
+    .icon-container-hub {
+      background: rgba(143, 77, 216, 0.1);
+      color: var(--hub-500);
     }
     
-    .icon-container-orange {
-      background: rgba(249, 115, 22, 0.1);
-      color: var(--color-orange);
+    .icon-container-academy {
+      background: rgba(3, 176, 180, 0.1);
+      color: var(--academy-500);
+    }
+    
+    .icon-container-business {
+      background: rgba(7, 65, 143, 0.1);
+      color: var(--business-500);
     }
     
     /* ==========================================
@@ -843,7 +899,7 @@
     .animation-preview {
       width: 80px;
       height: 80px;
-      background: var(--gradient-teal);
+      background: var(--gradient-hub);
       border-radius: var(--radius-lg);
       margin: 0 auto var(--space-3);
     }
@@ -884,6 +940,98 @@
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes ribbonUnfold {
+      0% { 
+        opacity: 0; 
+        transform: perspective(800px) rotateY(-25deg) translateX(-20px);
+        filter: blur(4px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: perspective(800px) rotateY(0deg) translateX(0);
+        filter: blur(0);
+      }
+    }
+    
+    @keyframes ribbonFoldIn {
+      0% { 
+        clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+        opacity: 0;
+      }
+      100% { 
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes ribbonSlide {
+      0% { 
+        transform: translateX(-100%) skewX(-15deg);
+        opacity: 0;
+      }
+      100% { 
+        transform: translateX(0) skewX(0deg);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(143, 77, 216, 0.3);
+      }
+      50% { 
+        box-shadow: 0 0 40px rgba(143, 77, 216, 0.5);
+      }
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+    
+    @keyframes dotPulse {
+      0%, 80%, 100% { transform: scale(0); opacity: 0; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    @keyframes progressIndeterminate {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(400%); }
+    }
+    
+    @keyframes ping {
+      0% { transform: scale(1); opacity: 1; }
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    
+    /* Skeleton loading */
+    .skeleton {
+      background: linear-gradient(90deg, var(--sp-grey-100) 0%, var(--sp-grey-200) 50%, var(--sp-grey-100) 100%);
+      background-size: 200px 100%;
+      animation: skeletonWave 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes skeletonWave {
+      0% { background-position: -200px 0; }
+      100% { background-position: calc(200px + 100%) 0; }
+    }
+    
+    /* Hover lift */
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
     
     /* ==========================================
@@ -954,6 +1102,11 @@
 </head>
 <body>
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" style="position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 9999;">
+    <div class="scroll-progress-bar" style="height: 100%; width: 0%; background: var(--gradient-hub); transition: width 0.1s linear;"></div>
+  </div>
+
   <!-- Mobile Toggle -->
   <button class="mobile-toggle" onclick="toggleSidebar()">
     <i class="ph ph-list"></i>
@@ -971,15 +1124,24 @@
       
       <nav>
         <div class="ds-nav-section">
+          <div class="ds-nav-title">Brand</div>
+          <ul class="ds-nav-links">
+            <li><a href="#ribbons" class="active">Geometric Flow</a></li>
+          </ul>
+        </div>
+        
+        <div class="ds-nav-section">
           <div class="ds-nav-title">Foundations</div>
           <ul class="ds-nav-links">
-            <li><a href="#colors" class="active">Farben</a></li>
+            <li><a href="#colors">Farben</a></li>
             <li><a href="#gradients">Gradienten</a></li>
             <li><a href="#typography">Typografie</a></li>
             <li><a href="#spacing">Spacing</a></li>
             <li><a href="#radius">Border Radius</a></li>
             <li><a href="#shadows">Schatten</a></li>
             <li><a href="#animations">Animationen</a></li>
+            <li><a href="#scrollytelling">Scrollytelling</a></li>
+            <li><a href="#interactive">Interactive</a></li>
           </ul>
         </div>
         
@@ -1008,129 +1170,251 @@
       
       <!-- Header -->
       <header style="margin-bottom: var(--space-12);">
-        <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; margin-bottom: var(--space-4);">
-          STARTPLATZ AI Hub
-          <span style="background: var(--gradient-teal); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Design System</span>
+        <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+          <span style="background: var(--gradient-hub); color: white; padding: 8px 16px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI HUB</span>
+          <span style="background: var(--gradient-academy); color: white; padding: 8px 16px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI ACADEMY</span>
+          <span style="background: var(--gradient-business); color: white; padding: 8px 16px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI BUSINESS</span>
+        </div>
+        <h1 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 700; margin-bottom: var(--space-4); letter-spacing: -0.02em;">
+          The Geometric Flow
+          <span style="display: block; font-size: 1.75rem; font-weight: 400; color: var(--sp-wordmark);">Design System v2.0</span>
         </h1>
-        <p style="font-size: 1.25rem; color: var(--color-text-secondary); max-width: 600px;">
-          Die zentrale Referenz für Designer und Entwickler. Konsistente, wiederverwendbare Bausteine für alle digitalen Produkte.
+        <p style="font-size: 1.125rem; color: var(--color-text-secondary); max-width: 600px; line-height: 1.6;">
+          Scharfe 45°/90° Ribbon-Faltungen, drei Pillar-Farben, Swiss Grid Disziplin. 
+          High-tech, mathematisch präzise, strukturiert & zuverlässig.
         </p>
       </header>
+      
+      <!-- Ribbon System -->
+      <section id="ribbons" class="ds-section">
+        <div class="ds-section-header">
+          <h2>The Geometric Flow</h2>
+          <p>Das Ribbon ist das aktive Markenelement. Scharfe Faltungen, klare Richtung, 3D-Tiefe.</p>
+        </div>
+        
+        <h3>Golden Rules</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-8);">
+          <div style="background: var(--sp-offwhite); padding: var(--space-6); border-radius: var(--radius-lg); border-left: 4px solid var(--color-success);">
+            <h4 style="font-size: 14px; margin-bottom: var(--space-2);">✓ DO</h4>
+            <ul style="font-size: 14px; color: var(--color-text-secondary); padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2);">
+              <li>45° und 90° Faltwinkel</li>
+              <li>Konsistente Ribbon-Dicke</li>
+              <li>Hard-edge Shadow an Falten</li>
+              <li>Eine Pillar-Farbe pro Logo</li>
+              <li>Off-white / Light Grey Backgrounds</li>
+            </ul>
+          </div>
+          <div style="background: var(--sp-offwhite); padding: var(--space-6); border-radius: var(--radius-lg); border-left: 4px solid var(--accent-coral);">
+            <h4 style="font-size: 14px; margin-bottom: var(--space-2);">✗ DON'T</h4>
+            <ul style="font-size: 14px; color: var(--color-text-secondary); padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2);">
+              <li>Runde U-Kurven / "Soft cloth"</li>
+              <li>Multi-color Gradienten in einem Ribbon</li>
+              <li>Extreme Perspektive (Wide-angle)</li>
+              <li>Busy Backgrounds ohne Separation</li>
+              <li>Tech-noise (Particles, Glow-spam)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h3>Ribbon Anatomy</h3>
+        <div style="background: var(--sp-grey-100); padding: var(--space-8); border-radius: var(--radius-lg); font-family: var(--font-mono); font-size: 13px;">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-4);">
+            <div><strong>Thickness (t)</strong></div><div>Basis-Einheit für alle Proportionen</div>
+            <div><strong>Inner shadow depth</strong></div><div>0.25t</div>
+            <div><strong>Fold highlight band</strong></div><div>0.18t</div>
+            <div><strong>Drop shadow blur</strong></div><div>0.35t (subtle)</div>
+            <div><strong>Drop shadow opacity</strong></div><div>12–18%</div>
+            <div><strong>Fold angles</strong></div><div>45° oder 90° only</div>
+            <div><strong>Corner radius</strong></div><div>Near-zero (micro bevel allowed)</div>
+          </div>
+        </div>
+      </section>
       
       <!-- Colors -->
       <section id="colors" class="ds-section">
         <div class="ds-section-header">
           <h2>Farben</h2>
-          <p>Unsere Farbpalette besteht aus Primary, Neutral und Semantic Colors.</p>
+          <p>Drei Pillar-Farben bilden das Herzstück des "Geometric Flow" Systems.</p>
         </div>
         
-        <h3>Primary Brand Colors</h3>
+        <h3>🟣 AI HUB — Core (Purple)</h3>
         <div class="color-grid">
           <div class="color-swatch">
-            <div class="color-preview" style="background: #00B5B6;">
-              <span>#00B5B6</span>
+            <div class="color-preview" style="background: #8F4DD8;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#8F4DD8</span>
             </div>
             <div class="color-info">
-              <h4>Teal</h4>
-              <p>--color-teal</p>
+              <h4>Hub 500</h4>
+              <p>--hub-500 (Primary)</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #005B63;">
-              <span>#005B63</span>
+            <div class="color-preview" style="background: #38196B;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#38196B</span>
             </div>
             <div class="color-info">
-              <h4>Teal Dark</h4>
-              <p>--color-teal-dark</p>
+              <h4>Hub 800</h4>
+              <p>--hub-800 (Deep)</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #9836FF;">
-              <span>#9836FF</span>
+            <div class="color-preview" style="background: #A86CF0;">
+              <span>#A86CF0</span>
             </div>
             <div class="color-info">
-              <h4>Purple</h4>
-              <p>--color-primary</p>
+              <h4>Hub Highlight</h4>
+              <p>--hub-highlight</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>🔵 AI ACADEMY — Growth (Teal)</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #03B0B4;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#03B0B4</span>
+            </div>
+            <div class="color-info">
+              <h4>Academy 500</h4>
+              <p>--academy-500 (Primary)</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #F97316;">
-              <span>#F97316</span>
+            <div class="color-preview" style="background: #005D5F;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#005D5F</span>
+            </div>
+            <div class="color-info">
+              <h4>Academy 800</h4>
+              <p>--academy-800 (Deep)</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #43D7D5;">
+              <span>#43D7D5</span>
+            </div>
+            <div class="color-info">
+              <h4>Academy Highlight</h4>
+              <p>--academy-highlight</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>🔷 AI BUSINESS — Foundation (Blue)</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #07418F;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#07418F</span>
+            </div>
+            <div class="color-info">
+              <h4>Business 500</h4>
+              <p>--business-500 (Primary)</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #011451;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#011451</span>
+            </div>
+            <div class="color-info">
+              <h4>Business 800</h4>
+              <p>--business-800 (Deep)</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #2E67C7;">
+              <span style="color: white; background: rgba(0,0,0,0.3);">#2E67C7</span>
+            </div>
+            <div class="color-info">
+              <h4>Business Highlight</h4>
+              <p>--business-highlight</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Accent Colors (Patterns & Highlights)</h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #FC9929;">
+              <span>#FC9929</span>
             </div>
             <div class="color-info">
               <h4>Orange</h4>
-              <p>--color-orange</p>
+              <p>--accent-orange</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #E95167;">
+              <span style="color: white;">#E95167</span>
+            </div>
+            <div class="color-info">
+              <h4>Coral</h4>
+              <p>--accent-coral</p>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #E72D90;">
+              <span style="color: white;">#E72D90</span>
+            </div>
+            <div class="color-info">
+              <h4>Magenta</h4>
+              <p>--accent-magenta</p>
             </div>
           </div>
         </div>
         
-        <h3>Text Colors</h3>
+        <h3>Neutral System</h3>
         <div class="color-grid">
           <div class="color-swatch">
-            <div class="color-preview" style="background: #0F172A;">
-              <span style="color: white; background: rgba(0,0,0,0.5);">#0F172A</span>
+            <div class="color-preview" style="background: #F7F6F7; border: 1px solid #E4E3E5;">
+              <span>#F7F6F7</span>
             </div>
             <div class="color-info">
-              <h4>Text Primary</h4>
-              <p>--color-text</p>
+              <h4>Off-White</h4>
+              <p>--sp-offwhite</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #475569;">
-              <span style="color: white; background: rgba(0,0,0,0.5);">#475569</span>
+            <div class="color-preview" style="background: #F3E6E0;">
+              <span>#F3E6E0</span>
             </div>
             <div class="color-info">
-              <h4>Text Secondary</h4>
-              <p>--color-text-secondary</p>
+              <h4>Warm Off-White</h4>
+              <p>--sp-warm-offwhite</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #94A3B8;">
-              <span>#94A3B8</span>
+            <div class="color-preview" style="background: #D4D3D8;">
+              <span>#D4D3D8</span>
             </div>
             <div class="color-info">
-              <h4>Text Tertiary</h4>
-              <p>--color-text-tertiary</p>
-            </div>
-          </div>
-        </div>
-        
-        <h3>Semantic Colors</h3>
-        <div class="color-grid">
-          <div class="color-swatch">
-            <div class="color-preview" style="background: #10B981;">
-              <span>#10B981</span>
-            </div>
-            <div class="color-info">
-              <h4>Success</h4>
-              <p>--color-success</p>
+              <h4>Cool Grey</h4>
+              <p>--sp-grey-300</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #F59E0B;">
-              <span>#F59E0B</span>
+            <div class="color-preview" style="background: #6E6E70;">
+              <span style="color: white;">#6E6E70</span>
             </div>
             <div class="color-info">
-              <h4>Warning</h4>
-              <p>--color-warning</p>
+              <h4>Wordmark Grey</h4>
+              <p>--sp-wordmark</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #EF4444;">
-              <span>#EF4444</span>
+            <div class="color-preview" style="background: #1A1A1A;">
+              <span style="color: white; background: rgba(255,255,255,0.2);">#1A1A1A</span>
             </div>
             <div class="color-info">
-              <h4>Error</h4>
-              <p>--color-error</p>
+              <h4>Text Charcoal</h4>
+              <p>--sp-text</p>
             </div>
           </div>
           <div class="color-swatch">
-            <div class="color-preview" style="background: #3B82F6;">
-              <span>#3B82F6</span>
+            <div class="color-preview" style="background: #0B0B0D;">
+              <span style="color: white; background: rgba(255,255,255,0.2);">#0B0B0D</span>
             </div>
             <div class="color-info">
-              <h4>Info</h4>
-              <p>--color-info</p>
+              <h4>Black</h4>
+              <p>--sp-black</p>
             </div>
           </div>
         </div>
@@ -1140,26 +1424,35 @@
       <section id="gradients" class="ds-section">
         <div class="ds-section-header">
           <h2>Gradienten</h2>
-          <p>Unsere Brand-Gradienten für CTAs, Heros und Feature-Bereiche.</p>
+          <p>Strukturelle Gradienten für 3D-Ribbon-Effekte. Keine dekorativen Rainbow-Gradienten.</p>
         </div>
         
         <div class="gradient-grid">
-          <div class="gradient-swatch" style="background: var(--gradient-teal);">
-            <h4>Teal Gradient</h4>
-            <code>--gradient-teal</code>
+          <div class="gradient-swatch" style="background: var(--gradient-hub);">
+            <h4>AI HUB</h4>
+            <code>--gradient-hub</code>
           </div>
-          <div class="gradient-swatch" style="background: var(--gradient-primary);">
-            <h4>Purple Gradient</h4>
-            <code>--gradient-primary</code>
+          <div class="gradient-swatch" style="background: var(--gradient-academy);">
+            <h4>AI ACADEMY</h4>
+            <code>--gradient-academy</code>
           </div>
-          <div class="gradient-swatch" style="background: var(--gradient-orange);">
-            <h4>Orange Gradient</h4>
-            <code>--gradient-orange</code>
+          <div class="gradient-swatch" style="background: var(--gradient-business);">
+            <h4>AI BUSINESS</h4>
+            <code>--gradient-business</code>
           </div>
           <div class="gradient-swatch" style="background: var(--gradient-dark);">
-            <h4>Dark Gradient</h4>
+            <h4>Dark</h4>
             <code>--gradient-dark</code>
           </div>
+        </div>
+        
+        <h3>Gradient Rules</h3>
+        <div style="background: var(--sp-grey-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-top: var(--space-4);">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3);">
+            <li>✓ 2–3 Stops max pro Fläche</li>
+            <li>✓ Richtung folgt der Oberflächenebene (Top = heller, Unterseite = dunkler)</li>
+            <li>✗ Keine Rainbow-Gradienten innerhalb eines Logo-Ribbons</li>
+          </ul>
         </div>
       </section>
       
@@ -1167,20 +1460,20 @@
       <section id="typography" class="ds-section">
         <div class="ds-section-header">
           <h2>Typografie</h2>
-          <p>Outfit für Headlines, Inter für Body Text, JetBrains Mono für Code.</p>
+          <p>Inter als primäre Schriftart für alles. Clean, Swiss-inspired, hochlesbar.</p>
         </div>
         
         <div class="type-scale">
           <div class="type-row">
-            <span class="type-label">H1 / 72px</span>
-            <span class="type-h1">KI-Manager</span>
+            <span class="type-label">H1 / 56px</span>
+            <span class="type-h1">AI HUB</span>
           </div>
           <div class="type-row">
-            <span class="type-label">H2 / 56px</span>
+            <span class="type-label">H2 / 40px</span>
             <span class="type-h2">Weiterbildung</span>
           </div>
           <div class="type-row">
-            <span class="type-label">H3 / 32px</span>
+            <span class="type-label">H3 / 28px</span>
             <span class="type-h3">Deine Vorteile</span>
           </div>
           <div class="type-row">
@@ -1188,11 +1481,7 @@
             <span class="type-h4">12 Wochen Vollzeit</span>
           </div>
           <div class="type-row">
-            <span class="type-label">H5 / 20px</span>
-            <span class="type-h5">AZAV-zertifiziert</span>
-          </div>
-          <div class="type-row">
-            <span class="type-label">Body / 16px</span>
+            <span class="type-label">Body / 18px</span>
             <span class="type-body">Lerne KI-Projekte zu leiten, Strategien zu entwickeln und Teams in die KI-Transformation zu führen.</span>
           </div>
           <div class="type-row">
@@ -1201,18 +1490,23 @@
           </div>
         </div>
         
-        <h3>Font Families</h3>
+        <h3>Font Family</h3>
         <div class="code-block">
           <code>
-<span class="comment">/* Headlines & Buttons */</span>
-<span class="property">--font-display</span>: <span class="value">'Outfit', sans-serif</span>;
+<span class="comment">/* Primary Typeface for all text */</span>
+<span class="property">--font-display</span>: <span class="value">'Inter', system-ui, -apple-system, sans-serif</span>;
+<span class="property">--font-body</span>: <span class="value">'Inter', system-ui, -apple-system, sans-serif</span>;
 
-<span class="comment">/* Body Text */</span>
-<span class="property">--font-body</span>: <span class="value">'Inter', sans-serif</span>;
-
-<span class="comment">/* Code */</span>
+<span class="comment">/* Monospace for code */</span>
 <span class="property">--font-mono</span>: <span class="value">'JetBrains Mono', monospace</span>;
           </code>
+        </div>
+        
+        <h3>Ribbon Labels (Uppercase, Bold)</h3>
+        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-4);">
+          <span style="background: var(--gradient-hub); color: white; padding: 12px 24px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI HUB</span>
+          <span style="background: var(--gradient-academy); color: white; padding: 12px 24px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI ACADEMY</span>
+          <span style="background: var(--gradient-business); color: white; padding: 12px 24px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; border-radius: 4px;">AI BUSINESS</span>
         </div>
       </section>
       
@@ -1335,24 +1629,253 @@
       <section id="animations" class="ds-section">
         <div class="ds-section-header">
           <h2>Animationen</h2>
-          <p>Subtile Bewegungen für lebendige Interfaces.</p>
+          <p>Motion System für den "Geometric Flow" – Ribbon Unfolds, Parallax, Micro-interactions.</p>
         </div>
         
-        <div class="animation-grid">
+        <h3>Ribbon Signature Animations</h3>
+        <div class="animation-grid" style="margin-bottom: var(--space-8);">
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: ribbonUnfold 1.5s ease both infinite;"></div>
+            <span>Ribbon Unfold</span>
+            <code>.anim-ribbon-unfold</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: ribbonFoldIn 1s ease both infinite;"></div>
+            <span>Ribbon Fold</span>
+            <code>.anim-ribbon-fold</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: ribbonSlide 1.5s ease both infinite;"></div>
+            <span>Ribbon Slide</span>
+            <code>.anim-ribbon-slide</code>
+          </div>
+        </div>
+        
+        <h3>Entry Animations</h3>
+        <div class="animation-grid" style="margin-bottom: var(--space-8);">
           <div class="animation-item">
             <div class="animation-preview anim-fade-up"></div>
             <span>Fade Up</span>
-            <code>fadeInUp</code>
+            <code>.anim-fade-up</code>
           </div>
           <div class="animation-item">
             <div class="animation-preview anim-scale-in"></div>
             <span>Scale In</span>
-            <code>scaleIn</code>
+            <code>.anim-scale-in</code>
           </div>
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: fadeInBlur 1s ease both infinite;"></div>
+            <span>Fade Blur</span>
+            <code>.anim-fade-blur</code>
+          </div>
+        </div>
+        
+        <h3>Continuous Animations</h3>
+        <div class="animation-grid" style="margin-bottom: var(--space-8);">
           <div class="animation-item">
             <div class="animation-preview anim-float"></div>
             <span>Float</span>
-            <code>float</code>
+            <code>.anim-float</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: pulseGlow 2s ease-in-out infinite; background: var(--gradient-hub);"></div>
+            <span>Pulse Glow</span>
+            <code>.anim-pulse-glow</code>
+          </div>
+          <div class="animation-item">
+            <div class="animation-preview" style="animation: breathe 3s ease-in-out infinite;"></div>
+            <span>Breathe</span>
+            <code>.anim-breathe</code>
+          </div>
+        </div>
+        
+        <h3>Timing & Easing</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-4);">
+          <div style="background: var(--sp-grey-100); padding: var(--space-6); border-radius: var(--radius-lg);">
+            <h4 style="font-size: 14px; margin-bottom: var(--space-3);">Durations</h4>
+            <ul style="font-size: 13px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: var(--space-2);">
+              <li>Micro: <span style="color: var(--hub-500);">120ms</span></li>
+              <li>Fast: <span style="color: var(--hub-500);">180ms</span></li>
+              <li>Normal: <span style="color: var(--hub-500);">300ms</span></li>
+              <li>Slow: <span style="color: var(--hub-500);">500ms</span></li>
+              <li>Slower: <span style="color: var(--hub-500);">700ms</span></li>
+            </ul>
+          </div>
+          <div style="background: var(--sp-grey-100); padding: var(--space-6); border-radius: var(--radius-lg);">
+            <h4 style="font-size: 14px; margin-bottom: var(--space-3);">Easing Curves</h4>
+            <ul style="font-size: 13px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: var(--space-2);">
+              <li>--ease-out: <span style="color: var(--academy-500);">cubic-bezier(0.16, 1, 0.3, 1)</span></li>
+              <li>--ease-ribbon: <span style="color: var(--academy-500);">cubic-bezier(0.22, 1, 0.36, 1)</span></li>
+              <li>--ease-spring: <span style="color: var(--academy-500);">cubic-bezier(0.34, 1.56, 0.64, 1)</span></li>
+              <li>--ease-button: <span style="color: var(--academy-500);">cubic-bezier(0.2, 0.8, 0.2, 1)</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Scrollytelling -->
+      <section id="scrollytelling" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Scrollytelling & Interactions</h2>
+          <p>Scroll-triggered reveals, Parallax, Loading States und interaktive Komponenten.</p>
+        </div>
+        
+        <h3>Scroll Reveal Classes</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-8);">
+          <div class="card reveal-demo" style="cursor: pointer;" onclick="this.classList.toggle('demo-active')">
+            <code style="font-size: 11px; display: block; margin-bottom: var(--space-2);">.reveal</code>
+            <p style="font-size: 13px;">Fade up from below</p>
+            <span style="font-size: 11px; color: var(--academy-500);">Click to toggle</span>
+          </div>
+          <div class="card reveal-demo" style="cursor: pointer;" onclick="this.classList.toggle('demo-active')">
+            <code style="font-size: 11px; display: block; margin-bottom: var(--space-2);">.reveal-scale</code>
+            <p style="font-size: 13px;">Scale in with bounce</p>
+            <span style="font-size: 11px; color: var(--academy-500);">Click to toggle</span>
+          </div>
+          <div class="card reveal-demo" style="cursor: pointer;" onclick="this.classList.toggle('demo-active')">
+            <code style="font-size: 11px; display: block; margin-bottom: var(--space-2);">.reveal-ribbon</code>
+            <p style="font-size: 13px;">3D ribbon unfold effect</p>
+            <span style="font-size: 11px; color: var(--academy-500);">Click to toggle</span>
+          </div>
+        </div>
+        
+        <h3>Loading & Skeleton States</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); margin-bottom: var(--space-8);">
+          <div>
+            <h4 style="font-size: 14px; margin-bottom: var(--space-4);">Skeleton Loading</h4>
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div class="skeleton" style="width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;"></div>
+              <div style="flex: 1;">
+                <div class="skeleton" style="height: 16px; width: 60%; margin-bottom: 8px;"></div>
+                <div class="skeleton" style="height: 12px; width: 80%; margin-bottom: 4px;"></div>
+                <div class="skeleton" style="height: 12px; width: 70%;"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size: 14px; margin-bottom: var(--space-4);">Loading Dots</h4>
+            <div style="display: flex; gap: 4px;">
+              <span class="loading-dot" style="width: 8px; height: 8px; background: var(--hub-500); border-radius: 50%; animation: dotPulse 1.4s ease-in-out infinite;"></span>
+              <span class="loading-dot" style="width: 8px; height: 8px; background: var(--hub-500); border-radius: 50%; animation: dotPulse 1.4s ease-in-out infinite; animation-delay: 0.2s;"></span>
+              <span class="loading-dot" style="width: 8px; height: 8px; background: var(--hub-500); border-radius: 50%; animation: dotPulse 1.4s ease-in-out infinite; animation-delay: 0.4s;"></span>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Progress Bar</h3>
+        <div style="margin-bottom: var(--space-8);">
+          <div style="height: 6px; background: var(--sp-grey-200); border-radius: 99px; overflow: hidden; margin-bottom: var(--space-4);">
+            <div style="height: 100%; width: 65%; background: var(--gradient-hub); border-radius: 99px; transition: width 0.3s ease;"></div>
+          </div>
+          <div style="height: 6px; background: var(--sp-grey-200); border-radius: 99px; overflow: hidden;">
+            <div style="height: 100%; width: 30%; background: var(--gradient-academy); border-radius: 99px; animation: progressIndeterminate 1.5s ease-in-out infinite;"></div>
+          </div>
+        </div>
+        
+        <h3>Hover Micro-Interactions</h3>
+        <div class="button-grid" style="margin-bottom: var(--space-8);">
+          <button class="btn btn-primary hover-lift" style="transition: transform 0.2s ease, box-shadow 0.2s ease;">Hover Lift</button>
+          <button class="btn btn-accent" style="position: relative; overflow: hidden;" onmouseenter="this.classList.add('shimmer-active')" onmouseleave="this.classList.remove('shimmer-active')">
+            Shimmer Effect
+            <span style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); animation: shimmer 2s ease-in-out infinite;"></span>
+          </button>
+          <button class="btn btn-secondary" style="transition: transform 0.15s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'">Hover Scale</button>
+        </div>
+        
+        <h3>Marquee / Logo Banner</h3>
+        <div style="overflow: hidden; padding: var(--space-6) 0; background: var(--sp-grey-100); border-radius: var(--radius-lg); mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+          <div style="display: flex; gap: var(--space-12); animation: marqueeLeft 20s linear infinite;">
+            <span style="font-weight: 600; color: var(--hub-500); white-space: nowrap;">AI HUB</span>
+            <span style="font-weight: 600; color: var(--academy-500); white-space: nowrap;">AI ACADEMY</span>
+            <span style="font-weight: 600; color: var(--business-500); white-space: nowrap;">AI BUSINESS</span>
+            <span style="font-weight: 600; color: var(--hub-500); white-space: nowrap;">STARTPLATZ</span>
+            <span style="font-weight: 600; color: var(--accent-orange); white-space: nowrap;">KI-MANAGER</span>
+            <span style="font-weight: 600; color: var(--hub-500); white-space: nowrap;">AI HUB</span>
+            <span style="font-weight: 600; color: var(--academy-500); white-space: nowrap;">AI ACADEMY</span>
+            <span style="font-weight: 600; color: var(--business-500); white-space: nowrap;">AI BUSINESS</span>
+            <span style="font-weight: 600; color: var(--hub-500); white-space: nowrap;">STARTPLATZ</span>
+            <span style="font-weight: 600; color: var(--accent-orange); white-space: nowrap;">KI-MANAGER</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Interactive Components -->
+      <section id="interactive" class="ds-section">
+        <div class="ds-section-header">
+          <h2>Interactive Components</h2>
+          <p>Akkordeons, Tabs, Tooltips und Modals mit smooth Transitions.</p>
+        </div>
+        
+        <h3>Accordion</h3>
+        <div style="border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-8);">
+          <div class="accordion-demo" onclick="toggleAccordion(this)">
+            <div style="padding: var(--space-5) var(--space-6); display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: var(--color-surface);">
+              <span style="font-weight: 600;">Was ist der KI-Manager Kurs?</span>
+              <i class="ph ph-caret-down" style="transition: transform 0.3s ease;"></i>
+            </div>
+            <div style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--sp-offwhite);">
+              <div style="padding: var(--space-5) var(--space-6);">
+                <p style="font-size: 14px;">Der KI-Manager ist eine 12-wöchige Vollzeit-Weiterbildung, die dich befähigt, KI-Projekte in Unternehmen zu leiten.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-demo" onclick="toggleAccordion(this)" style="border-top: 1px solid var(--color-border);">
+            <div style="padding: var(--space-5) var(--space-6); display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: var(--color-surface);">
+              <span style="font-weight: 600;">Ist der Kurs förderfähig?</span>
+              <i class="ph ph-caret-down" style="transition: transform 0.3s ease;"></i>
+            </div>
+            <div style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--sp-offwhite);">
+              <div style="padding: var(--space-5) var(--space-6);">
+                <p style="font-size: 14px;">Ja! Der Kurs ist AZAV-zertifiziert und kann zu 100% über den Bildungsgutschein finanziert werden.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Tabs</h3>
+        <div style="margin-bottom: var(--space-8);">
+          <div style="display: flex; gap: var(--space-1); background: var(--sp-grey-100); padding: 4px; border-radius: 99px; width: fit-content; margin-bottom: var(--space-6);">
+            <button class="tab-btn active" onclick="switchTab(this, 'tab1')" style="padding: 10px 20px; border: none; border-radius: 99px; font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.2s ease; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">Arbeitssuchende</button>
+            <button class="tab-btn" onclick="switchTab(this, 'tab2')" style="padding: 10px 20px; border: none; border-radius: 99px; font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.2s ease; background: transparent;">Selbstzahler</button>
+            <button class="tab-btn" onclick="switchTab(this, 'tab3')" style="padding: 10px 20px; border: none; border-radius: 99px; font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.2s ease; background: transparent;">Unternehmen</button>
+          </div>
+          <div id="tab1" class="tab-content" style="animation: fadeInUp 0.3s ease;">
+            <div class="card" style="border-top: 3px solid var(--academy-500);">
+              <h4>Für Arbeitssuchende</h4>
+              <p style="font-size: 14px;">100% Förderung über den Bildungsgutschein möglich.</p>
+            </div>
+          </div>
+          <div id="tab2" class="tab-content" style="display: none;">
+            <div class="card" style="border-top: 3px solid var(--hub-500);">
+              <h4>Für Selbstzahler</h4>
+              <p style="font-size: 14px;">Flexible Ratenzahlung und Early-Bird Rabatte verfügbar.</p>
+            </div>
+          </div>
+          <div id="tab3" class="tab-content" style="display: none;">
+            <div class="card" style="border-top: 3px solid var(--business-500);">
+              <h4>Für Unternehmen</h4>
+              <p style="font-size: 14px;">QCG-Förderung und maßgeschneiderte Inhouse-Schulungen.</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Tooltip</h3>
+        <div style="display: flex; gap: var(--space-6); margin-bottom: var(--space-8);">
+          <div class="tooltip-demo" style="position: relative; display: inline-block;">
+            <button class="btn btn-secondary" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)">Hover me</button>
+            <div class="tooltip-box" style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(8px); padding: 8px 16px; background: var(--sp-black); color: white; font-size: 13px; border-radius: 8px; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.15s ease; margin-bottom: 8px;">
+              Tooltip content here
+              <span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--sp-black);"></span>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Notification Badge (Ping)</h3>
+        <div style="display: flex; gap: var(--space-8);">
+          <div style="position: relative; display: inline-block;">
+            <button class="btn btn-secondary"><i class="ph ph-bell"></i> Notifications</button>
+            <span style="position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; background: var(--accent-coral); border-radius: 50%; border: 2px solid var(--color-surface);"></span>
+            <span style="position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; background: var(--accent-coral); border-radius: 50%; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
           </div>
         </div>
       </section>
@@ -1361,13 +1884,20 @@
       <section id="buttons" class="ds-section">
         <div class="ds-section-header">
           <h2>Buttons</h2>
-          <p>Pill-shaped Buttons mit verschiedenen Varianten.</p>
+          <p>Pill-shaped Buttons. Jeder Pillar hat seinen eigenen Button-Stil.</p>
         </div>
         
-        <h3>Varianten</h3>
+        <h3>Pillar Buttons</h3>
         <div class="button-grid">
-          <button class="btn btn-primary"><i class="ph ph-calendar"></i> Primary</button>
-          <button class="btn btn-accent"><i class="ph ph-robot"></i> Accent</button>
+          <button class="btn" style="background: var(--gradient-hub); color: white;"><i class="ph ph-brain"></i> AI HUB</button>
+          <button class="btn" style="background: var(--gradient-academy); color: white;"><i class="ph ph-graduation-cap"></i> AI ACADEMY</button>
+          <button class="btn" style="background: var(--gradient-business); color: white;"><i class="ph ph-briefcase"></i> AI BUSINESS</button>
+        </div>
+        
+        <h3>System Buttons</h3>
+        <div class="button-grid">
+          <button class="btn btn-primary"><i class="ph ph-calendar"></i> Primary (Academy)</button>
+          <button class="btn btn-accent"><i class="ph ph-robot"></i> Accent (Hub)</button>
           <button class="btn btn-secondary">Secondary</button>
           <button class="btn btn-outline">Outline</button>
         </div>
@@ -1382,9 +1912,19 @@
         <h3>Auf dunklem Hintergrund</h3>
         <div class="component-preview component-preview-dark">
           <div class="button-grid">
-            <button class="btn" style="background: white; color: var(--color-teal-dark);">White</button>
-            <button class="btn" style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);">Ghost</button>
+            <button class="btn" style="background: white; color: var(--sp-text);">White</button>
+            <button class="btn" style="background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.3);">Ghost</button>
           </div>
+        </div>
+        
+        <h3>Hover Interaction</h3>
+        <div style="background: var(--sp-grey-100); padding: var(--space-6); border-radius: var(--radius-lg); margin-top: var(--space-4);">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3);">
+            <li>• Duration: <code>120–180ms</code></li>
+            <li>• Easing: <code>cubic-bezier(0.2, 0.8, 0.2, 1)</code></li>
+            <li>• Transform: <code>translateY(-2px)</code></li>
+            <li>• Optional: Folded-corner highlight on hover</li>
+          </ul>
         </div>
       </section>
       
@@ -1392,25 +1932,42 @@
       <section id="cards" class="ds-section">
         <div class="ds-section-header">
           <h2>Cards</h2>
-          <p>Container für gruppierte Inhalte.</p>
+          <p>Off-white Basis mit subtilen Schatten. Optional: Folded-corner Overlay.</p>
         </div>
         
+        <h3>Pillar Cards</h3>
+        <div class="card-grid">
+          <div class="card" style="border-top: 3px solid var(--hub-500);">
+            <h4>AI HUB Card</h4>
+            <p>Purple top border für Hub-bezogene Inhalte.</p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--academy-500);">
+            <h4>AI ACADEMY Card</h4>
+            <p>Teal top border für Academy-bezogene Inhalte.</p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--business-500);">
+            <h4>AI BUSINESS Card</h4>
+            <p>Blue top border für Business-bezogene Inhalte.</p>
+          </div>
+        </div>
+        
+        <h3>System Cards</h3>
         <div class="card-grid">
           <div class="card">
             <h4>Standard Card</h4>
-            <p>Die Standard-Card mit Hover-Effekt für allgemeine Inhalte.</p>
+            <p>Off-white mit soft shadow. Hover: translateY(-4px).</p>
           </div>
-          <div class="card card-featured">
+          <div class="card card-featured" style="border-color: var(--hub-500);">
             <h4>Featured Card</h4>
-            <p>Hervorgehobene Card mit Teal Border und Badge.</p>
+            <p>Hervorgehobene Card mit Pillar Border.</p>
           </div>
           <div class="card card-accent">
             <h4>Accent Card</h4>
-            <p>Card mit linkem Farbbalken für wichtige Hinweise.</p>
+            <p>Ribbon kann "pass behind" oder "over" cards gehen (Parallax).</p>
           </div>
           <div class="card card-glass">
             <h4>Glass Card</h4>
-            <p>Glassmorphism-Effekt für moderne Overlays.</p>
+            <p>Glassmorphism für Overlays auf Ribbon-Backgrounds.</p>
           </div>
         </div>
       </section>
@@ -1419,13 +1976,19 @@
       <section id="badges" class="ds-section">
         <div class="ds-section-header">
           <h2>Badges & Tags</h2>
-          <p>Kleine Labels für Status und Kategorien.</p>
+          <p>Pillar-basierte Labels und Status-Anzeigen.</p>
         </div>
         
-        <h3>Badges</h3>
+        <h3>Pillar Badges</h3>
+        <div class="badge-grid" style="margin-bottom: var(--space-6);">
+          <span class="badge" style="background: rgba(143, 77, 216, 0.12); color: var(--hub-700);"><i class="ph ph-brain"></i> AI HUB</span>
+          <span class="badge" style="background: rgba(3, 176, 180, 0.12); color: var(--academy-700);"><i class="ph ph-graduation-cap"></i> AI ACADEMY</span>
+          <span class="badge" style="background: rgba(7, 65, 143, 0.12); color: var(--business-700);"><i class="ph ph-briefcase"></i> AI BUSINESS</span>
+        </div>
+        
+        <h3>Status Badges</h3>
         <div class="badge-grid" style="margin-bottom: var(--space-6);">
           <span class="badge badge-teal"><i class="ph ph-check"></i> Förderfähig</span>
-          <span class="badge badge-purple"><i class="ph ph-robot"></i> AI-Automation</span>
           <span class="badge badge-success">Verfügbar</span>
           <span class="badge badge-warning"><i class="ph ph-warning"></i> Limitiert</span>
           <span class="badge badge-error">Ausgebucht</span>
@@ -1529,27 +2092,35 @@
           </div>
         </div>
         
-        <h3>Icon Container</h3>
+        <h3>Pillar Icon Containers</h3>
+        <div style="display: flex; gap: var(--space-6); align-items: flex-end; margin-top: var(--space-6);">
+          <div style="text-align: center;">
+            <div class="icon-container" style="background: rgba(143, 77, 216, 0.1); color: var(--hub-500);"><i class="ph ph-brain"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">AI HUB</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container" style="background: rgba(3, 176, 180, 0.1); color: var(--academy-500);"><i class="ph ph-graduation-cap"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">AI ACADEMY</span>
+          </div>
+          <div style="text-align: center;">
+            <div class="icon-container" style="background: rgba(7, 65, 143, 0.1); color: var(--business-500);"><i class="ph ph-briefcase"></i></div>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">AI BUSINESS</span>
+          </div>
+        </div>
+        
+        <h3>Sizes</h3>
         <div style="display: flex; gap: var(--space-6); align-items: flex-end; margin-top: var(--space-6);">
           <div style="text-align: center;">
             <div class="icon-container icon-container-sm"><i class="ph ph-brain"></i></div>
-            <span style="display: block; margin-top: 8px; font-size: 12px;">Small</span>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">40px</span>
           </div>
           <div style="text-align: center;">
             <div class="icon-container"><i class="ph ph-brain"></i></div>
-            <span style="display: block; margin-top: 8px; font-size: 12px;">Default</span>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">64px</span>
           </div>
           <div style="text-align: center;">
             <div class="icon-container icon-container-lg"><i class="ph ph-brain"></i></div>
-            <span style="display: block; margin-top: 8px; font-size: 12px;">Large</span>
-          </div>
-          <div style="text-align: center;">
-            <div class="icon-container icon-container-purple"><i class="ph ph-robot"></i></div>
-            <span style="display: block; margin-top: 8px; font-size: 12px;">Purple</span>
-          </div>
-          <div style="text-align: center;">
-            <div class="icon-container icon-container-orange"><i class="ph ph-rocket-launch"></i></div>
-            <span style="display: block; margin-top: 8px; font-size: 12px;">Orange</span>
+            <span style="display: block; margin-top: 8px; font-size: 12px;">80px</span>
           </div>
         </div>
       </section>
@@ -1558,7 +2129,7 @@
       <section id="usage" class="ds-section">
         <div class="ds-section-header">
           <h2>Code Usage</h2>
-          <p>So verwendest du das Design System in deinen Projekten.</p>
+          <p>So verwendest du das "Geometric Flow" Design System.</p>
         </div>
         
         <h3>CSS importieren</h3>
@@ -1572,20 +2143,31 @@
         <h3>Fonts einbinden</h3>
         <div class="code-block">
           <code>
-<span class="comment">&lt;!-- Google Fonts --&gt;</span>
+<span class="comment">&lt;!-- Inter (Primary Font) --&gt;</span>
 &lt;link rel="preconnect" href="<span class="value">https://fonts.googleapis.com</span>"&gt;
-&lt;link href="<span class="value">https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap</span>" rel="stylesheet"&gt;
+&lt;link href="<span class="value">https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap</span>" rel="stylesheet"&gt;
 
 <span class="comment">&lt;!-- Phosphor Icons --&gt;</span>
 &lt;script src="<span class="value">https://unpkg.com/@phosphor-icons/web@2.0.3</span>"&gt;&lt;/script&gt;
           </code>
         </div>
         
-        <h3>Button verwenden</h3>
+        <h3>Pillar Button verwenden</h3>
         <div class="code-block">
           <code>
-&lt;a href="<span class="value">#</span>" class="<span class="property">btn btn-primary</span>"&gt;
-  &lt;i class="<span class="property">ph ph-calendar</span>"&gt;&lt;/i&gt; Termin buchen
+<span class="comment">&lt;!-- AI HUB Button --&gt;</span>
+&lt;a href="<span class="value">#</span>" class="<span class="property">btn btn-hub</span>"&gt;
+  &lt;i class="<span class="property">ph ph-brain</span>"&gt;&lt;/i&gt; Zum Hub
+&lt;/a&gt;
+
+<span class="comment">&lt;!-- AI ACADEMY Button --&gt;</span>
+&lt;a href="<span class="value">#</span>" class="<span class="property">btn btn-academy</span>"&gt;
+  &lt;i class="<span class="property">ph ph-graduation-cap</span>"&gt;&lt;/i&gt; Weiterbildung starten
+&lt;/a&gt;
+
+<span class="comment">&lt;!-- AI BUSINESS Button --&gt;</span>
+&lt;a href="<span class="value">#</span>" class="<span class="property">btn btn-business</span>"&gt;
+  &lt;i class="<span class="property">ph ph-briefcase</span>"&gt;&lt;/i&gt; Für Unternehmen
 &lt;/a&gt;
           </code>
         </div>
@@ -1594,12 +2176,38 @@
         <div class="code-block">
           <code>
 <span class="property">.my-component</span> {
-  <span class="property">background</span>: <span class="value">var(--color-surface)</span>;
-  <span class="property">border-radius</span>: <span class="value">var(--radius-xl)</span>;
-  <span class="property">padding</span>: <span class="value">var(--space-6)</span>;
-  <span class="property">box-shadow</span>: <span class="value">var(--shadow-lg)</span>;
-  <span class="property">transition</span>: <span class="value">all var(--duration-normal) var(--ease-out)</span>;
+  <span class="comment">/* Pillar Colors */</span>
+  <span class="property">background</span>: <span class="value">var(--hub-500)</span>;      <span class="comment">/* Purple */</span>
+  <span class="property">background</span>: <span class="value">var(--academy-500)</span>;  <span class="comment">/* Teal */</span>
+  <span class="property">background</span>: <span class="value">var(--business-500)</span>; <span class="comment">/* Blue */</span>
+  
+  <span class="comment">/* Neutrals */</span>
+  <span class="property">background</span>: <span class="value">var(--sp-offwhite)</span>;  <span class="comment">/* #F7F6F7 */</span>
+  <span class="property">color</span>: <span class="value">var(--sp-text)</span>;           <span class="comment">/* #1A1A1A */</span>
+  
+  <span class="comment">/* Motion */</span>
+  <span class="property">transition</span>: <span class="value">all var(--duration-fast) var(--ease-ribbon)</span>;
 }
+          </code>
+        </div>
+        
+        <h3>Quick Token Reference</h3>
+        <div class="code-block">
+          <code>
+<span class="comment">/* Pillar Colors */</span>
+<span class="property">--hub-500</span>: <span class="value">#8F4DD8</span>;       <span class="comment">/* AI HUB Purple */</span>
+<span class="property">--academy-500</span>: <span class="value">#03B0B4</span>;   <span class="comment">/* AI ACADEMY Teal */</span>
+<span class="property">--business-500</span>: <span class="value">#07418F</span>; <span class="comment">/* AI BUSINESS Blue */</span>
+
+<span class="comment">/* Neutrals */</span>
+<span class="property">--sp-offwhite</span>: <span class="value">#F7F6F7</span>;
+<span class="property">--sp-text</span>: <span class="value">#1A1A1A</span>;
+<span class="property">--sp-black</span>: <span class="value">#0B0B0D</span>;
+
+<span class="comment">/* Accents */</span>
+<span class="property">--accent-orange</span>: <span class="value">#FC9929</span>;
+<span class="property">--accent-coral</span>: <span class="value">#E95167</span>;
+<span class="property">--accent-magenta</span>: <span class="value">#E72D90</span>;
           </code>
         </div>
       </section>
@@ -1607,20 +2215,124 @@
       <!-- Footer -->
       <footer style="margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--color-border); text-align: center;">
         <p style="color: var(--color-text-tertiary); font-size: 14px;">
-          STARTPLATZ AI Hub Design System v1.0 | Dezember 2024
+          STARTPLATZ AI Hub — "The Geometric Flow" Design System v2.1 | Production Release | Dezember 2024
         </p>
+        <p style="color: var(--color-text-tertiary); font-size: 12px; margin-top: var(--space-2);">
+          Sharp 45°/90° folds • Three Pillars • Swiss Grid • High-tech & Reliable
+        </p>
+        <div style="margin-top: var(--space-6); display: flex; justify-content: center; gap: var(--space-4);">
+          <span class="badge" style="background: var(--color-success); color: white;">WCAG 2.1 AA</span>
+          <span class="badge" style="background: var(--sp-grey-200); color: var(--sp-text);">Chrome 90+</span>
+          <span class="badge" style="background: var(--sp-grey-200); color: var(--sp-text);">Firefox 88+</span>
+          <span class="badge" style="background: var(--sp-grey-200); color: var(--sp-text);">Safari 14+</span>
+        </div>
       </footer>
       
     </main>
   </div>
 
   <script>
-    // Mobile sidebar toggle
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
+    /**
+     * STARTPLATZ AI Hub Design System - Interactive Documentation
+     * Production-ready JavaScript with accessibility and performance focus
+     */
+    
+    // ========================================
+    // Toast Notification System
+    // ========================================
+    function showToast(message, type = 'success') {
+      // Remove existing toast
+      const existingToast = document.querySelector('.ds-toast');
+      if (existingToast) existingToast.remove();
+      
+      // Create toast
+      const toast = document.createElement('div');
+      toast.className = 'ds-toast';
+      toast.setAttribute('role', 'alert');
+      toast.setAttribute('aria-live', 'polite');
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: ${type === 'success' ? 'var(--color-success)' : 'var(--hub-500)'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        z-index: 10000;
+        animation: fadeInUp 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      `;
+      toast.innerHTML = `<i class="ph ph-check-circle"></i> ${message}`;
+      document.body.appendChild(toast);
+      
+      // Auto-remove
+      setTimeout(() => {
+        toast.style.animation = 'fadeOutDown 0.3s ease forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
     }
     
-    // Smooth scroll for nav links
+    // Add fadeOutDown keyframes if not exists
+    if (!document.querySelector('#toast-styles')) {
+      const style = document.createElement('style');
+      style.id = 'toast-styles';
+      style.textContent = `
+        @keyframes fadeOutDown {
+          from { opacity: 1; transform: translateY(0); }
+          to { opacity: 0; transform: translateY(20px); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // ========================================
+    // Copy to Clipboard Utility
+    // ========================================
+    async function copyToClipboard(text, feedbackMessage = 'Kopiert!') {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(feedbackMessage);
+        return true;
+      } catch (err) {
+        console.error('Copy failed:', err);
+        showToast('Kopieren fehlgeschlagen', 'error');
+        return false;
+      }
+    }
+    
+    // ========================================
+    // Mobile Sidebar
+    // ========================================
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+      
+      // Toggle body scroll
+      document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+      
+      // Update ARIA
+      const isOpen = sidebar.classList.contains('open');
+      sidebar.setAttribute('aria-expanded', isOpen);
+    }
+    
+    // Close sidebar on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('open')) {
+          toggleSidebar();
+        }
+      }
+    });
+    
+    // ========================================
+    // Navigation
+    // ========================================
     document.querySelectorAll('.ds-nav-links a').forEach(link => {
       link.addEventListener('click', function(e) {
         // Update active state
@@ -1629,25 +2341,320 @@
         
         // Close mobile sidebar
         if (window.innerWidth < 1024) {
-          document.getElementById('sidebar').classList.remove('open');
+          toggleSidebar();
         }
       });
     });
     
-    // Copy to clipboard on icon click
-    document.querySelectorAll('.icon-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const iconClass = this.querySelector('span').textContent;
-        navigator.clipboard.writeText(`<i class="ph ${iconClass}"></i>`);
-        
-        // Visual feedback
-        const original = this.style.background;
-        this.style.background = 'rgba(0, 181, 182, 0.1)';
-        setTimeout(() => this.style.background = original, 200);
+    // Update active nav on scroll
+    const sections = document.querySelectorAll('.ds-section');
+    const navLinks = document.querySelectorAll('.ds-nav-links a');
+    
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -80% 0px' });
+    
+    sections.forEach(section => navObserver.observe(section));
+    
+    // ========================================
+    // Color Swatches - Click to Copy
+    // ========================================
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.style.cursor = 'pointer';
+      swatch.setAttribute('role', 'button');
+      swatch.setAttribute('tabindex', '0');
+      
+      const copyColor = () => {
+        const colorName = swatch.querySelector('.color-name')?.textContent || '';
+        const colorValue = swatch.querySelector('.color-value')?.textContent || '';
+        copyToClipboard(`var(${colorName})`, `${colorValue} kopiert!`);
+      };
+      
+      swatch.addEventListener('click', copyColor);
+      swatch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          copyColor();
+        }
       });
     });
+    
+    // ========================================
+    // Icon Items - Click to Copy
+    // ========================================
+    document.querySelectorAll('.icon-item').forEach(item => {
+      item.setAttribute('role', 'button');
+      item.setAttribute('tabindex', '0');
+      
+      const copyIcon = () => {
+        const iconClass = item.querySelector('span').textContent;
+        copyToClipboard(`<i class="ph ${iconClass}"></i>`, `${iconClass} kopiert!`);
+      };
+      
+      item.addEventListener('click', copyIcon);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          copyIcon();
+        }
+      });
+    });
+    
+    // ========================================
+    // Accordion Component
+    // ========================================
+    function toggleAccordion(element) {
+      const content = element.querySelector('div:last-child');
+      const icon = element.querySelector('.ph-caret-down');
+      const trigger = element.querySelector('div:first-child');
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+      
+      // Update ARIA
+      trigger.setAttribute('aria-expanded', !isOpen);
+      
+      // Close all accordions first
+      document.querySelectorAll('.accordion-demo').forEach(acc => {
+        const accContent = acc.querySelector('div:last-child');
+        const accIcon = acc.querySelector('.ph-caret-down');
+        const accTrigger = acc.querySelector('div:first-child');
+        accContent.style.maxHeight = '0px';
+        if (accIcon) accIcon.style.transform = 'rotate(0deg)';
+        if (accTrigger) accTrigger.setAttribute('aria-expanded', 'false');
+      });
+      
+      // Open clicked one if it was closed
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    }
+    
+    // ========================================
+    // Tab Component
+    // ========================================
+    function switchTab(btn, tabId) {
+      const tabList = btn.closest('.tab-list, div');
+      const buttons = tabList?.querySelectorAll('.tab-btn') || document.querySelectorAll('.tab-btn');
+      
+      // Update button states and ARIA
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = 'transparent';
+        b.style.boxShadow = 'none';
+        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('tabindex', '-1');
+      });
+      btn.classList.add('active');
+      btn.style.background = 'white';
+      btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+      btn.setAttribute('aria-selected', 'true');
+      btn.setAttribute('tabindex', '0');
+      
+      // Show/hide content with animation
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+        tab.setAttribute('hidden', '');
+      });
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) {
+        activeTab.style.display = 'block';
+        activeTab.removeAttribute('hidden');
+        activeTab.style.animation = 'fadeInUp 0.3s ease';
+      }
+    }
+    
+    // Keyboard navigation for tabs
+    document.querySelectorAll('.tab-btn').forEach((btn, index, buttons) => {
+      btn.addEventListener('keydown', (e) => {
+        let newIndex = index;
+        if (e.key === 'ArrowRight') newIndex = (index + 1) % buttons.length;
+        if (e.key === 'ArrowLeft') newIndex = (index - 1 + buttons.length) % buttons.length;
+        
+        if (newIndex !== index) {
+          e.preventDefault();
+          buttons[newIndex].focus();
+          buttons[newIndex].click();
+        }
+      });
+    });
+    
+    // ========================================
+    // Tooltip Component
+    // ========================================
+    function showTooltip(element) {
+      const tooltip = element.parentElement.querySelector('.tooltip-box');
+      if (tooltip) {
+        tooltip.style.opacity = '1';
+        tooltip.style.visibility = 'visible';
+        tooltip.style.transform = 'translateX(-50%) translateY(0)';
+      }
+    }
+    
+    function hideTooltip(element) {
+      const tooltip = element.parentElement.querySelector('.tooltip-box');
+      if (tooltip) {
+        tooltip.style.opacity = '0';
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.transform = 'translateX(-50%) translateY(8px)';
+      }
+    }
+    
+    // ========================================
+    // Scroll Progress Indicator
+    // ========================================
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollProgress = document.querySelector('.scroll-progress-bar');
+          if (scrollProgress) {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+            scrollProgress.style.width = scrollPercent + '%';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    
+    // ========================================
+    // Scroll Reveal Observer
+    // ========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Unobserve after reveal (performance)
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px', threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-blur, .reveal-ribbon').forEach(el => {
+      revealObserver.observe(el);
+    });
+    
+    // ========================================
+    // Counter Animation
+    // ========================================
+    function animateCounter(element, target, duration = 2000) {
+      const start = 0;
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeOut);
+        
+        element.textContent = current.toLocaleString('de-DE');
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          element.textContent = target.toLocaleString('de-DE');
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+    
+    // ========================================
+    // Parallax Effect
+    // ========================================
+    function initParallax() {
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      if (!parallaxElements.length) return;
+      
+      // Check for reduced motion preference
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      
+      let rafId;
+      window.addEventListener('scroll', () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        
+        rafId = requestAnimationFrame(() => {
+          parallaxElements.forEach(el => {
+            const speed = parseFloat(el.dataset.parallax) || 0.5;
+            const rect = el.getBoundingClientRect();
+            const visible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (visible) {
+              const yPos = (rect.top - window.innerHeight) * speed;
+              el.style.transform = `translateY(${yPos}px)`;
+            }
+          });
+        });
+      }, { passive: true });
+    }
+    
+    // ========================================
+    // Code Block Copy
+    // ========================================
+    document.querySelectorAll('.code-block').forEach(block => {
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'code-copy-btn';
+      copyBtn.innerHTML = '<i class="ph ph-copy"></i>';
+      copyBtn.style.cssText = `
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: var(--sp-grey-200);
+        border: none;
+        border-radius: 6px;
+        padding: 8px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      `;
+      copyBtn.setAttribute('aria-label', 'Code kopieren');
+      
+      block.style.position = 'relative';
+      block.appendChild(copyBtn);
+      
+      block.addEventListener('mouseenter', () => copyBtn.style.opacity = '1');
+      block.addEventListener('mouseleave', () => copyBtn.style.opacity = '0');
+      
+      copyBtn.addEventListener('click', () => {
+        const code = block.querySelector('code').textContent;
+        copyToClipboard(code, 'Code kopiert!');
+      });
+    });
+    
+    // ========================================
+    // Initialize
+    // ========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      initParallax();
+      
+      // Trigger initial animations
+      setTimeout(() => {
+        document.querySelectorAll('.anim-fade-up, .anim-fade-blur, .anim-scale-in').forEach(el => {
+          el.style.opacity = '1';
+        });
+      }, 100);
+    });
+    
+    // ========================================
+    // Performance: Reduce motion if preferred
+    // ========================================
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('reduce-motion');
+    }
   </script>
 
 </body>
 </html>
+
+
 
